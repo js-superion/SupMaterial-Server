@@ -16,7 +16,7 @@ import cn.superion.util.BaseHibernateDAO;
  * delete() operations can directly support Spring container-managed
  * transactions or they can be augmented to handle user-managed Spring
  * transactions. Each of these methods provides additional information for how
- * to configure it for the desired type of transaction control.
+ * to configure it for the desired type of transaction control.66
  * 
  * @see cn.superion.cssd.entity.CssdAntisepsisDict
  * @author MyEclipse Persistence Tools
