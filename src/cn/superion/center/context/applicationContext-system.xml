@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/flex 
+	http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+	<!-- Spring注入的测试DAO -->
+	<bean id="TestImpl" class="cn.superion.system.service.TestImpl">
+		<property name="sysUserDao">
+			<ref bean="sysUserDAO" />
+		</property>
+		<property name="sysRoleDataDao">
+			<ref bean="sysRoleDataDAO" />
+		</property>
+		<flex:remoting-destination />
+	</bean>
+
+	<!-- 系统管理部分注入的DAO -->
+	<!-- 用户登录部分 -->
+	<bean id="loginImpl" class="cn.superion.system.service.LoginImpl">
+	 <property name="licenseType" value="09"/>
+		<property name="licenseIni" value="License.ini"/>
+		<property name="sysUnitInforDao">
+			<ref bean="sysUnitInforDAO" />
+		</property>
+		<property name="sysUserDao">
+			<ref bean="sysUserDAO" />
+		</property>
+		<property name="sysUserUnitDao">
+			<ref bean="sysUserUnitDAO" />
+		</property>
+		<property name="sysUserRoleDao">
+			<ref bean="sysUserRoleDAO" />
+		</property>
+		<property name="userDeptDao">
+			<ref bean="sysUserDeptDAO" />
+		</property>
+		<property name="userWardDao">
+			<ref bean="sysUserWardDAO" />
+		</property>
+		<property name="sysRoleDataDao">
+			<ref bean="sysRoleDataDAO" />
+		</property>
+		<property name="cdPersonDictDao">
+			<ref bean="cdPersonDictDAO" />
+		</property>
+		<property name="cdDeptDictDAO">
+			<ref bean="cdDeptDictDAO" />
+		</property>
+		<property name="appMenuDao">
+			<ref bean="sysApplicationMenuDAO" />
+		</property>
+		<property name="dataViewDao">
+			<ref bean="sysDataViewDAO" />
+		</property>
+		<property name="sysUserStorageDAO">
+			<ref bean="sysUserStorageDAO" />
+		</property>
+		<property name="sysApplicationVerDAO">
+			<ref bean="sysApplicationVerDAO" />
+		</property>
+		<property name="sysUserLogDAO">
+			<ref bean="sysUserLogDAO" />
+		</property>
+		<property name="sysUserWorkLogDAO">
+			<ref bean="sysUserWorkLogDAO" />
+		</property>
+		<flex:remoting-destination />
+	</bean>
+
+	<bean id="unitInforImpl" class="cn.superion.system.service.UnitInforImpl">
+		<property name="sysUnitInforDao" ref="sysUnitInforDAO" />
+		<property name="sysUserDao" ref="sysUserDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 用户管理 -->
+	<bean id="userImpl" class="cn.superion.system.service.UserImpl">
+		<property name="sysUnitInfoDao" ref="sysUnitInforDAO" />
+		<property name="sysUserDao" ref="sysUserDAO" />
+		<property name="sysUserDataViewDao" ref="sysUserDataViewDAO" />
+		<property name="sysRoleDao" ref="sysRoleDAO" />
+		<property name="sysUserRoleDao" ref="sysUserRoleDAO" />
+		<property name="sysUserUnitDao" ref="sysUserUnitDAO" />
+		<property name="toolDAO" ref="baseToolDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 角色管理 -->
+	<bean id="roleImpl" class="cn.superion.system.service.RoleImpl">
+		<property name="sysRoleDao" ref="sysRoleDAO" />
+		<property name="sysRoleDataDao" ref="sysRoleDataDAO" />
+		<property name="sysAppDao" ref="sysApplicationVerDAO" />
+		<property name="sysAppMenuDao" ref="sysApplicationMenuDAO" />
+		<property name="sysDataViewDao" ref="sysDataViewDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 通知管理 -->
+	<bean id="noticeImpl" class="cn.superion.notice.service.NoticeImpl">
+		<property name="cdNoticeDao" ref="cdNoticeDao" />
+		<property name="cdNoticeFilesDao" ref="cdNoticeFilesDao" />
+		<flex:remoting-destination />
+	</bean>
+</beans>

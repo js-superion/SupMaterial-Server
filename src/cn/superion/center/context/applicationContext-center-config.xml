@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/flex
+	http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+	<!-- Service -->
+	<!-- 部门对照用户 -->
+	<bean id="centerDeptVsUserImpl" class="cn.superion.center.config.service.DeptVsUserImpl">
+		<property name="duDAO" ref="cdDeptVsUserDAO" />
+		<property name="userDAO" ref="sysUserDAO" />
+		<property name="userDeptDAO" ref="sysUserDeptDAO" />
+		<flex:remoting-destination /> 
+	</bean>
+	<!-- 费用分类 -->
+	<bean id="centerFeeClassImpl" class="cn.superion.center.config.service.FeeClassImpl">
+		<property name="outDAO" ref="cdOutRcptClassDictDAO" />
+		<property name="inDAO" ref="cdInRcptClassDictDAO" />
+		<property name="reckoDAO" ref="cdReckoClassDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 仓库档案 -->
+	<bean id="centerStorageImpl" class="cn.superion.center.config.service.StorageImpl">
+		<property name="storDAO" ref="cdStorageDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 仓库货位档案 -->
+	<bean id="centerStoragePositionImpl" class="cn.superion.center.config.service.StoragePositionImpl">
+		<property name="storDAO" ref="cdStorageDictDAO" />
+		<property name="positionDAO" ref="cdStoragePositionDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 仓库收发类别 -->
+	<bean id="centerStorageRdImpl" class="cn.superion.center.config.service.StorageRdImpl">
+		<property name="rdDAO" ref="cdStorageRdDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 仓库对照用户 -->
+	<bean id="centerStorageVsUserImpl" class="cn.superion.center.config.service.StorageVsUserImpl">
+		<property name="suDAO" ref="cdStorageVsUserDAO" />
+		<property name="userDAO" ref="sysUserDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 系统参数 -->
+	<bean id="centerSysParamImpl" class="cn.superion.center.config.service.SysParamImpl">
+		<property name="paramDAO" ref="cdSysParamDAO" />
+		<property name="appDAO" ref="sysApplicationVerDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 用药途径 -->
+	<bean id="centerUseWayDetailImpl" class="cn.superion.center.config.service.UseWayDetailImpl">
+		<property name="detailDAO" ref="cdUseWayDetailDAO" />
+		<property name="useWayDAO" ref="cvUseWayDictDAO" />
+		<property name="vCdUseWayDetailDAO" ref="vCdUseWayDetailDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 病区对照科室 -->
+	<bean id="centerWardVsDeptImpl" class="cn.superion.center.config.service.WardVsDeptImpl">
+		<property name="dwDAO" ref="cdDeptVsWardDAO" />
+		<property name="deptDAO" ref="cdDeptDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 病区对照药房 -->
+	<bean id="centerWardVsDispeImpl" class="cn.superion.center.config.service.WardVsDispeImpl">
+		<property name="wdDAO" ref="cdWardVsDispeDAO" />
+		<property name="storDAO" ref="cdStorageDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 病区对照用户 -->
+	<bean id="centerWardVsUserImpl" class="cn.superion.center.config.service.WardVsUserImpl">
+		<property name="wuDAO" ref="cdWardVsUserDAO" />
+		<property name="userDAO" ref="sysUserDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 费别字典 -->
+	<bean id="centerChargeTypeImpl" class="cn.superion.center.config.service.ChargeTypeImpl">
+		<property name="chargeTypeDAO" ref="cvChargeTypeDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+</beans>

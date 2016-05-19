@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/flex 
+	http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+	<!-- HIS服务总线 -->
+	<bean id="hisServiceFacade" class="cn.superion.materialDept.his.service.HisServiceFacadeImpl">
+		<!-- HIS库标识：1：世一HIS库；2：天健HIS库 -->
+		<property name="hisLibSign" value="1"/>
+	</bean>
+	<!-- 世一HIS基础字典服务 -->
+	<bean id="supHisBaseDictImpl" class="cn.superion.materialDept.his.service.SupHisBaseDictImpl">
+		<property name="cdClinicDictDAO" ref="cdClinicDictDAO"/>
+	</bean>
+	<!-- 世一HIS病人信息服务 -->
+	<bean id="supHisPatImpl" class="cn.superion.materialDept.his.service.SupHisPatImpl">
+		<property name="inpPatsVisitDAO" ref="inpPatsVisitDAO"/>
+		<property name="inpPatsInDeptDAO" ref="inpPatsInDeptDAO"/>
+	</bean>
+	<!-- 世一HIS病人费用服务 -->
+	<bean id="supHisBillImpl" class="cn.superion.materialDept.his.service.SupHisBillImpl">
+		<property name="inpPatsBillDetailDAO" ref="inpPatsBillDetailDAO"/>
+		<property name="clinicItemDictDAO" ref="clinicItemDictDAO"/>
+		<property name="cdMaterialDictDAO" ref="cdMaterialDictDAO"/>
+		<property name="sysUnitInforDAO" ref="sysUnitInforDAO"/>
+	</bean>
+	<!-- 公共接口 -->
+	<bean id="deptCommMaterialServiceImpl" class="cn.superion.materialDept.common.service.CommMaterialServiceImpl">
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<property name="materialCurrentRcptNoDAO" ref="materialCurrentRcptNoDAO"/>
+		<property name="materialRdsMasterDeptDAO" ref="materialRdsMasterDeptDAO"/>
+		<property name="materialRdsDetailDeptDAO" ref="materialRdsDetailDeptDAO"/>
+		<property name="materialCurrentStockDeptDAO" ref="materialCurrentStockDeptDAO"/>
+		<property name="hisServiceFacade" ref="hisServiceFacade"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 物资领用申请，物资入库确认 -->
+	<bean id="deptApplyImpl" class="cn.superion.materialDept.receive.service.ApplyImpl">
+		<property name="cdMaterialDictDAO" ref="cdMaterialDictDAO"/>
+		<property name="cdMaterialCardDAO" ref="cdMaterialCardDAO"/>
+		<property name="materialProvideMasterDAO" ref="materialProvideMasterDAO"/>
+		<property name="materialProvideDetailDAO" ref="materialProvideDetailDAO"/>
+		<property name="materialRdsMasterDAO" ref="materialRdsMasterDAO"/>
+		<property name="commMaterialServiceImpl" ref="commMaterialServiceImpl"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<property name="materialCurrentStockDAO" ref="materialCurrentStockDAO"/>
+		<property name="cdStorageDictDAO" ref="cdStorageDictDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 其他入库处理，期初结存录入 -->
+	<bean id="deptOtherReceiveImpl" class="cn.superion.materialDept.receive.service.OtherReceiveImpl">
+		<property name="materialRdsMasterDeptDAO" ref="materialRdsMasterDeptDAO"/>
+		<property name="materialRdsDetailDeptDAO" ref="materialRdsDetailDeptDAO"/>
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 代销物资领用申请，确认 -->
+	<bean id="agentMaterialUsedImpl" class="cn.superion.materialDept.deliver.service.AgentMaterialUsedImpl">
+		<property name="materialRdsMasterDAO" ref="materialRdsMasterDAO"/>
+		<property name="materialRdsDetailDAO" ref="materialRdsDetailDAO"/>
+		<property name="materialCurrentStockDAO" ref="materialCurrentStockDAO"/>
+		<property name="materialPatsMasterDAO" ref="materialPatsMasterDAO"/>
+		<property name="materialPatsDetailDAO" ref="materialPatsDetailDAO"/>
+		<property name="cdMaterialDictDAO" ref="cdMaterialDictDAO"/>
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<property name="commMaterialServiceImpl" ref="commMaterialServiceImpl"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<property name="hisServiceFacade" ref="hisServiceFacade"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 病人费用记帐，退费 -->
+	<bean id="deptPatsFeeImpl" class="cn.superion.materialDept.deliver.service.PatsFeeImpl">
+		<property name="materialPatsMasterDAO" ref="materialPatsMasterDAO"/>
+		<property name="materialPatsDetailDAO" ref="materialPatsDetailDAO"/>
+		<property name="vMaterialPatsDAO" ref="vMaterialPatsDAO"/>
+		<property name="cdMaterialDictDAO" ref="cdMaterialDictDAO"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<property name="hisServiceFacade" ref="hisServiceFacade"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 其他出库处理 -->
+	<bean id="deptOtherDeliverImpl" class="cn.superion.materialDept.deliver.service.OtherDeliverImpl">
+		<property name="materialRdsMasterDeptDAO" ref="materialRdsMasterDeptDAO"/>
+		<property name="materialRdsDetailDeptDAO" ref="materialRdsDetailDeptDAO"/>
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 物资报损处理 -->
+	<bean id="deptRejectImpl" class="cn.superion.materialDept.other.service.RejectImpl">
+		<property name="materialRejectMasterDeptDAO" ref="materialRejectMasterDeptDAO"/>
+		<property name="materialRejectDetailDeptDAO" ref="materialRejectDetailDeptDAO"/>
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 库存盘点处理 -->
+	<bean id="deptCheckImpl" class="cn.superion.materialDept.other.service.CheckImpl">
+		<property name="materialCurrentStockDeptDAO" ref="materialCurrentStockDeptDAO"/>
+		<property name="materialCheckMasterDeptDAO" ref="materialCheckMasterDeptDAO"/>
+		<property name="materialCheckDetailDeptDAO" ref="materialCheckDetailDeptDAO"/>
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 月末结账处理 -->
+	<bean id="deptMonthImpl" class="cn.superion.materialDept.other.service.MonthImpl">
+		<property name="cdMaterialDictDAO" ref="cdMaterialDictDAO"/>
+		<property name="materialMonthDAO" ref="materialMonthDAO"/>
+		<property name="materialRdsStockDAO" ref="materialRdsStockDAO"/>
+		<property name="vMaterialRdsDeptDAO" ref="vMaterialRdsDeptDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 入库单据列表 -->
+	<bean id="deptReceiveListImpl" class="cn.superion.materialDept.list.service.ReceiveListImpl">
+		<property name="vMaterialRdsDeptDAO" ref="vMaterialRdsDeptDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 出库单据列表 -->
+	<bean id="deptDeliverListImpl" class="cn.superion.materialDept.list.service.DeliverListImpl">
+		<property name="vMaterialRdsDeptDAO" ref="vMaterialRdsDeptDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 报损单据列表 -->
+	<bean id="deptRejectListImpl" class="cn.superion.materialDept.list.service.RejectListImpl">
+		<property name="vMaterialRejectDeptDAO" ref="vMaterialRejectDeptDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 盘点单据列表 -->
+	<bean id="deptCheckListImpl" class="cn.superion.materialDept.list.service.CheckListImpl">
+		<property name="vMaterialCheckDeptDAO" ref="vMaterialCheckDeptDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 病人费用列表 -->
+	<bean id="deptFeeListImpl" class="cn.superion.materialDept.list.service.FeeListImpl">
+		<property name="vMaterialPatsDAO" ref="vMaterialPatsDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 现存量查询 -->
+	<bean id="deptCurrentStockStatImpl" class="cn.superion.materialDept.stat.service.CurrentStockStatImpl">
+		<property name="materialCurrentStockDeptDAO" ref="materialCurrentStockDeptDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 流水帐查询 -->
+	<bean id="deptCurrentAccountStatImpl" class="cn.superion.materialDept.stat.service.CurrentAccountStatImpl">
+		<property name="vMaterialRdsDeptDAO" ref="vMaterialRdsDeptDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 入库汇总 -->
+	<bean id="deptReceiveStatImpl" class="cn.superion.materialDept.stat.service.ReceiveStatImpl">
+		<property name="vMaterialRdsDeptDAO" ref="vMaterialRdsDeptDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 出库汇总 -->
+	<bean id="deptDeliverStatImpl" class="cn.superion.materialDept.stat.service.DeliverStatImpl">
+		<property name="vMaterialRdsDeptDAO" ref="vMaterialRdsDeptDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 收发存汇总 -->
+	<bean id="deptRdsStatImpl" class="cn.superion.materialDept.stat.service.RdsStatImpl">
+		<property name="materialRdsStockDAO" ref="materialRdsStockDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 保质期预警 -->
+	<bean id="deptAvailDateImpl" class="cn.superion.materialDept.stat.service.AvailDateImpl">
+		<property name="materialCurrentStockDeptDAO" ref="materialCurrentStockDeptDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 高值耗材入库 -->
+	<bean id="deptReceiveValueImpl" class="cn.superion.materialDept.receive.service.ReceiveValueImpl">
+		<property name="materialRdsMasterDeptDAO" ref="materialRdsMasterDeptDAO"/>
+		<property name="materialRdsDetailDeptDAO" ref="materialRdsDetailDeptDAO"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<property name="cdProviderMaterialDAO" ref="cdProviderMaterialDAO"/>
+		<property name="cdMaterialDictDAO" ref="cdMaterialDictDAO"/>
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<property name="materialCurrentStockDeptDAO" ref="materialCurrentStockDeptDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 高值耗材计费 -->
+	<bean id="deptDeliverValueImpl" class="cn.superion.materialDept.deliver.service.DeliverValueImpl">
+		<property name="materialPatsMasterDAO" ref="materialPatsMasterDAO"/>
+		<property name="materialPatsDetailDAO" ref="materialPatsDetailDAO"/>
+		<property name="vMaterialPatsDAO" ref="vMaterialPatsDAO"/>
+		<property name="cdMaterialDictDAO" ref="cdMaterialDictDAO"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<property name="hisServiceFacade" ref="hisServiceFacade"/>
+		<property name="materialRdsDetailDeptDAO" ref="materialRdsDetailDeptDAO"/>
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<property name="sysUnitInforDAO" ref="sysUnitInforDAO"/>
+		<property name="commSysParameterDAO" ref="commSysParameterDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	
+	<!-- 病人使用材料-->
+	<bean id="deptPatsMaterialStatImpl" class="cn.superion.materialDept.stat.service.PatsMaterialStatImpl">
+		<property name="vMaterialPatsDAO" ref="vMaterialPatsDAO"/>
+		<flex:remoting-destination />
+	</bean>
+</beans>

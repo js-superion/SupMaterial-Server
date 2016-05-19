@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="materialCurrentRcptNoDAO" class="cn.superion.material.dao.MaterialCurrentRcptNoDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialRdsMasterDAO" class="cn.superion.material.dao.MaterialRdsMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialRdsDetailDAO" class="cn.superion.material.dao.MaterialRdsDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vMaterialRdsDAO" class="cn.superion.material.dao.VMaterialRdsDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialCurrentStockDAO" class="cn.superion.material.dao.MaterialCurrentStockDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialPlanMasterDAO" class="cn.superion.material.dao.MaterialPlanMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialPlanDetailDAO" class="cn.superion.material.dao.MaterialPlanDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vMaterialPlanDAO" class="cn.superion.material.dao.VMaterialPlanDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialOrderMasterDAO" class="cn.superion.material.dao.MaterialOrderMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialOrderDetailDAO" class="cn.superion.material.dao.MaterialOrderDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vMaterialOrderDAO" class="cn.superion.material.dao.VMaterialOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vMaterialProvideDAO" class="cn.superion.material.dao.VMaterialProvideDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="materialInvoiceMasterDAO" class="cn.superion.material.dao.MaterialInvoiceMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialInvoiceDetailDAO" class="cn.superion.material.dao.MaterialInvoiceDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vMaterialInvoiceDAO" class="cn.superion.material.dao.VMaterialInvoiceDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialApplyMasterDAO" class="cn.superion.material.dao.MaterialApplyMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialApplyDetailDAO" class="cn.superion.material.dao.MaterialApplyDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vMaterialApplyDAO" class="cn.superion.material.dao.VMaterialApplyDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialProvideMasterDAO" class="cn.superion.material.dao.MaterialProvideMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialProvideDetailDAO" class="cn.superion.material.dao.MaterialProvideDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialRejectMasterDAO" class="cn.superion.material.dao.MaterialRejectMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialRejectDetailDAO" class="cn.superion.material.dao.MaterialRejectDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vMaterialRejectDAO" class="cn.superion.material.dao.VMaterialRejectDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialCheckMasterDAO" class="cn.superion.material.dao.MaterialCheckMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialCheckDetailDAO" class="cn.superion.material.dao.MaterialCheckDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vMaterialCheckDAO" class="cn.superion.material.dao.VMaterialCheckDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialRdsStockDAO" class="cn.superion.material.dao.MaterialRdsStockDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialMonthDAO" class="cn.superion.material.dao.MaterialMonthDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialFaMasterDAO" class="cn.superion.material.dao.MaterialFaMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialFaInvoiceDAO" class="cn.superion.material.dao.MaterialFaInvoiceDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vMaterialFaDetailDAO" class="cn.superion.material.dao.VMaterialFaDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialRdsAcctMasterDAO" class="cn.superion.material.dao.MaterialRdsAcctMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialAcctCurrentRcptNoDAO" class="cn.superion.material.dao.MaterialAcctCurrentRcptNoDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialChangePriceMasterDAO" class="cn.superion.material.dao.MaterialChangePriceMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="materialChangePriceDetailDAO" class="cn.superion.material.dao.MaterialChangePriceDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+
+	</bean>
+	
+	<bean id="materialSupplierSummaryDAO" class="cn.superion.material.dao.MaterialSupplierSummaryDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="materialSupplierDetailDAO" class="cn.superion.material.dao.MaterialSupplierDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="cdDeptLimitDAO" class="cn.superion.material.dao.CdDeptLimitDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+</beans>	

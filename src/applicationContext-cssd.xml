@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/flex 
+	http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+	<!-- 公共接口 -->
+	<bean id="commCssdServiceImpl" class="cn.superion.cssd.common.CommCssdServiceImpl">
+	    <property name="cssdFileClassDictDAO" ref="cssdFileClassDictDAO"/>
+	    <property name="cssdPackageClassDictDAO" ref="cssdPackageClassDictDAO"/>
+	    <property name="cssdPackageModeDictDAO" ref="cssdPackageModeDictDAO"/>
+	    <property name="cssdChemistryMaterialDictDAO" ref="cssdChemistryMaterialDictDAO"/>
+	    <property name="cssdAntisepsisDictDAO" ref="cssdAntisepsisDictDAO"/>
+	    <property name="cssdEquipmentDictDAO" ref="cssdEquipmentDictDAO"/>
+	    <property name="cssdSterilizeTypeDictDAO" ref="cssdSterilizeTypeDictDAO"/>
+	    <property name="vCssdPackageDictDetailDAO" ref="vCssdPackageDictDetailDAO"/>
+	    <property name="cssdPackageDictDAO" ref="cssdPackageDictDAO"/>
+	    <property name="cssdPackageDictDetailDAO" ref="cssdPackageDictDetailDAO"/>
+	    <property name="cssdStockMasterDAO" ref="cssdStockMasterDAO"/>
+		<property name="cssdSpecimenDictDAO" ref="cssdSpecimenDictDAO"/>
+		<property name="cssdTestItemDictDAO" ref="cssdTestItemDictDAO"/>
+		<property name="cssdChemistryTypeDictDAO" ref="cssdChemistryTypeDictDAO"/>
+		<flex:remoting-destination />
+	</bean>	
+	<!-- 组织管理  人员配置 -->
+	<bean id="cssdConfigImpl" class="cn.superion.cssd.organization.service.CssdConfigImpl">
+		<property name="cdPersonDictDao" ref="cdPersonDictDAO"/>
+		<property name="cssdPersonTrainFilesDAO" ref="cssdPersonTrainFilesDAO"/>
+		<property name="cssdPersonTrainDAO" ref="cssdPersonTrainDAO"/>
+		<flex:remoting-destination />
+	</bean>
+ 	<!-- 组织管理  人员规范 -->
+	<bean id="cssdStandardImpl" class="cn.superion.cssd.organization.service.CssdStandardImpl">
+	    <property name="cssdWorkRuleMasterDAO" ref="cssdWorkRuleMasterDAO"/>
+		<property name="cssdWorkRuleFilesDAO" ref="cssdWorkRuleFilesDAO"/>
+		<flex:remoting-destination />
+	</bean>  
+ 	<!-- 组织管理  检查 -->
+	<bean id="cssdCheckImpl" class="cn.superion.cssd.organization.service.CssdCheckImpl">
+	    <property name="cssdCheckFilesDAO" ref="cssdCheckFilesDAO"/>
+		<property name="cssdCheckMasterDAO" ref="cssdCheckMasterDAO"/>
+		<flex:remoting-destination />
+	</bean> 
+ 	<!-- 组织管理  排班 -->
+	<bean id="cssdArrangeImpl" class="cn.superion.cssd.organization.service.CssdArrangeImpl">
+	    <property name="cssdPersonArrangeDAO" ref="cssdPersonArrangeDAO"/>
+	    <property name="cdPersonDictDAO" ref="cdPersonDictDAO"/>
+	    <property name="cdWorkClassDictDAO" ref="cdWorkClassDictDAO"/>
+	    <property name="cdWorkClassTimeDictDAO" ref="cdWorkClassTimeDictDAO"/>
+		<flex:remoting-destination />
+	</bean> 			
+	<!-- 文件分类 -->
+	<bean id="cssdFileTypeImpl" class="cn.superion.cssd.system.service.CssdFileTypeImpl">
+		<property name="cssdFileClassDictDAo" ref="cssdFileClassDictDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 物品包分类 -->
+	<bean id="cssdPackageClassImpl" class="cn.superion.cssd.system.service.CssdPackageClassImpl">
+		<property name="cssdPackageClassDictDAO" ref="cssdPackageClassDictDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 物品回收处理 -->
+	<bean id="cssdRetrieveImpl" class="cn.superion.cssd.work.service.RetrieveImpl">
+		<property name="cssdRetrieveMasterDAO" ref="cssdRetrieveMasterDAO"/>
+		<property name="cssdRetrieveDetailDAO" ref="cssdRetrieveDetailDAO"/>
+		<property name="cssdDeliverMasterDAO" ref="cssdDeliverMasterDAO"/>
+		<property name="cssdStockMasterDAO" ref="cssdStockMasterDAO"/>
+		<property name="vCssdStockDAO" ref="vCssdStockDAO"/>
+		<property name="vCssdDeliverStockDetailDAO" ref="vCssdDeliverStockDetailDAO"/>
+		<property name="deptRejectImpl" ref="deptRejectImpl"/>
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 物品清洗消毒 -->
+	<bean id="cssdWashImpl" class="cn.superion.cssd.work.service.WashImpl">
+		<property name="cssdWashMasterDAO" ref="cssdWashMasterDAO"/>
+		<property name="cssdWashDetailDAO" ref="cssdWashDetailDAO"/>
+		<property name="cssdRetrieveDetailDAO" ref="cssdRetrieveDetailDAO"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 物品打包登记 -->
+	<bean id="cssdPackImpl" class="cn.superion.cssd.work.service.PackImpl">
+		<property name="cssdPackageMasterDAO" ref="cssdPackageMasterDAO"/>
+		<property name="cssdStockMasterDAO" ref="cssdStockMasterDAO"/>
+		<property name="cssdStockDetailDAO" ref="cssdStockDetailDAO"/>
+		<property name="cssdPackageDictDAO" ref="cssdPackageDictDAO"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<property name="cssdWashDetailDAO" ref="cssdWashDetailDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 物品灭菌登记 -->
+	<bean id="cssdSterilizeImpl" class="cn.superion.cssd.work.service.SterilizeImpl">
+		<property name="cssdSterilizeMasterDAO" ref="cssdSterilizeMasterDAO"/>
+		<property name="cssdStockMasterDAO" ref="cssdStockMasterDAO"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 物品发放处理 -->
+	<bean id="cssdDeliverImpl" class="cn.superion.cssd.work.service.DeliverImpl">
+		<property name="cssdDeliverMasterDAO" ref="cssdDeliverMasterDAO"/>
+		<property name="cssdStockMasterDAO" ref="cssdStockMasterDAO"/>
+		<property name="cssdProvideMasterDAO" ref="cssdProvideMasterDAO"/>
+		<property name="cssdProvideDetailDAO" ref="cssdProvideDetailDAO"/>
+		<property name="vCssdStockDAO" ref="vCssdStockDAO"/>
+		<property name="cdSysParamDAO" ref="cdSysParamDAO"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<flex:remoting-destination />
+	</bean>
+	<!--物品包维护 -->
+	<bean id="cssdPackageDictImpl" class="cn.superion.cssd.system.service.CssdPackageDictImpl">
+		<property name="cssdPackageDictDAO" ref="cssdPackageDictDAO"/>
+		<property name="cssdPackageDictDetailDAO" ref="cssdPackageDictDetailDAO"/>
+		<property name="vCssdPackageDictDetailDAO" ref="vCssdPackageDictDetailDAO"/>
+		<property name="cssdPackageClassDictDAO" ref="cssdPackageClassDictDAO"/>
+		<flex:remoting-destination />
+	</bean>
+ 	<!-- 质量管理  物理 -->
+	<bean id="cssdPhysicsImpl" class="cn.superion.cssd.quality.service.CssdPhysicsImpl">
+	    <property name="cssdPhysicsMasterDAO" ref="cssdPhysicsMasterDAO"/>
+	    <property name="cssdPhysicsFilesDAO" ref="cssdPhysicsFilesDAO"/>
+	    <property name="picFileUtil" ref="picFileUtilImpl"/>
+		<flex:remoting-destination />
+	</bean> 	
+				
+ 	<!--质量管理  生物-->
+	<bean id="cssdBiologyImpl" class="cn.superion.cssd.quality.service.CssdBiologyImpl">
+	    <property name="cssdBiologyDetialDAO" ref="cssdBiologyDetialDAO"/>
+	    <property name="cssdBiologyFilesDAO" ref="cssdBiologyFilesDAO"/>
+	    <property name="cssdBiologyMasterDAO" ref="cssdBiologyMasterDAO"/>
+	    <property name="picFileUtil" ref="picFileUtilImpl"/>
+		<flex:remoting-destination />
+	</bean> 	
+ 	<!-- 质量管理  化学-->
+	<bean id="cssdChemistryImpl" class="cn.superion.cssd.quality.service.CssdChemistryImpl">
+	    <property name="cssdChemistryDetailDAO" ref="cssdChemistryDetailDAO"/>
+	    <property name="cssdChemistryFilesDAO" ref="cssdChemistryFilesDAO"/>
+	    <property name="cssdChemistryMasterDAO" ref="cssdChemistryMasterDAO"/>
+	    <property name="cssdChemistryMaterialDictDAO" ref="cssdChemistryMaterialDictDAO"/>
+	    <property name="cssdStockMasterDAO" ref="cssdStockMasterDAO"/>
+		 <property name="picFileUtil" ref="picFileUtilImpl"/>
+		<flex:remoting-destination />
+	</bean> 	
+ 	<!-- 质量管理  清洗-->
+	<bean id="cssdWashQualityImpl" class="cn.superion.cssd.quality.service.CssdWashQualityImpl">
+	    <property name="cssdWashQualityDetailDAO" ref="cssdWashQualityDetailDAO"/>
+	    <property name="vCssdWashQualityDAO" ref="vCssdWashQualityDAO"/>
+	    <property name="cssdWashQualityMasterDAO" ref="cssdWashQualityMasterDAO"/>
+		<flex:remoting-destination />
+	</bean> 	
+ 	<!-- 质量管理  灭菌-->
+	<bean id="cssdSterilizationImpl" class="cn.superion.cssd.quality.service.CssdSterilizationImpl">
+	    <property name="cssdSterilizeEffectDAO" ref="cssdSterilizeEffectDAO"/>
+	    <property name="cssdSterilizeEffectDetailDAO" ref="cssdSterilizeEffectDetailDAO"/>
+	    <property name="vCssdSterilizeEffectDAO" ref="vCssdSterilizeEffectDAO"/>
+		<flex:remoting-destination />
+	</bean> 						
+	<!-- 保存图片接口 -->
+	<bean id="picFileUtilImpl" class="cn.superion.cssd.quality.service.PicFileUtilImpl">
+	</bean>		
+	
+	<!-- 当前现存量查询 -->
+	<bean id="cssdCurrentStockStatImpl" class="cn.superion.cssd.stat.service.CurrentStockStatImpl">
+		<property name="cssdStockMasterDAO" ref="cssdStockMasterDAO"/>
+		<property name="cssdStockDetailDAO" ref="cssdStockDetailDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 无菌包效期查询 -->
+	<bean id="cssdAvailDateImpl" class="cn.superion.cssd.stat.service.AvailDateImpl">
+		<property name="cssdStockMasterDAO" ref="cssdStockMasterDAO"/>
+		<flex:remoting-destination />
+	</bean>	
+	<!-- 物品包追溯查询 -->
+	<bean id="cssdTraceImpl" class="cn.superion.cssd.stat.service.TraceImpl">
+		<property name="cssdStockMasterDAO" ref="cssdStockMasterDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 人员工作查询 -->
+	<bean id="cssdPersonWorkloadImpl" class="cn.superion.cssd.stat.service.PersonWorkloadImpl">
+		<property name="vCssdPersonWorkloadDAO" ref="vCssdPersonWorkloadDAO"/>
+		<flex:remoting-destination />
+	</bean>	
+	<!-- 物品报损统计 -->
+	<bean id="cssdRetrievedMaterialRejectionImpl" class="cn.superion.cssd.stat.service.RetrievedMaterialRejectionImpl">
+		<property name="vCssdRetrieveDAO" ref="vCssdRetrieveDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 科室领用统计 -->
+	<bean id="cssdDeptUseImpl" class="cn.superion.cssd.stat.service.DeptUseImpl">
+		<property name="vCssdDeliverStockDAO" ref="vCssdDeliverStockDAO"/>
+		<property name="vCssdDeliverStockDetailDAO" ref="vCssdDeliverStockDetailDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 科室包领用接口 -->
+	<bean id="cssdApplyImpl" class="cn.superion.cssd.work.service.CssdApplyImpl">
+		<property name="cssdProvideMasterDAO" ref="cssdProvideMasterDAO"/>
+		<property name="deptCommMaterialServiceImpl" ref="deptCommMaterialServiceImpl"/>
+		<property name="commMaterialServiceImpl" ref="commMaterialServiceImpl"/>
+		<property name="cssdProvideDetailDAO" ref="cssdProvideDetailDAO"/>
+		<flex:remoting-destination />
+	</bean>
+</beans>

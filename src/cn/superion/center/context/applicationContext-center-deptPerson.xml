@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:flex="http://www.springframework.org/schema/flex" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/flex 
+	http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+	<!-- Service -->
+	<!-- dept -->
+	<bean id="deptImpl" class="cn.superion.center.deptPerson.service.DeptImpl">
+		<property name="cdDeptDictDAO" ref="cdDeptDictDAO" />
+		<property name="cdPersonDictDAO" ref="cdPersonDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+
+	<!-- person -->
+	<bean id="personImpl" class="cn.superion.center.deptPerson.service.PersonImpl">
+		<property name="cdPersonDictDAO" ref="cdPersonDictDAO" />
+		<property name="cvNationDictDAO" ref="cvNationDictDAO" />
+		<property name="cvAreaDictDAO" ref="cvAreaDictDAO" />
+		<property name="cdPersonClassDictDAO" ref="cdPersonClassDictDAO" />
+		<property name="cdDeptDictDAO" ref="cdDeptDictDAO" />
+		<property name="cdPostDictDAO" ref="cdPostDictDAO" />
+		<property name="cdDutyDictDAO" ref="cdDutyDictDAO" />
+		<property name="cdTechnPostDictDAO" ref="cdTechnPostDictDAO" />
+		<property name="sysUserDao" ref="sysUserDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- personClass -->
+	<bean id="personClassImpl" class="cn.superion.center.deptPerson.service.PersonClassImpl">
+		<property name="cdPersonClassDictDAO" ref="cdPersonClassDictDAO" />
+		<property name="cdPersonDictDAO" ref="cdPersonDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- duty -->
+	<bean id="dutyImpl" class="cn.superion.center.deptPerson.service.DutyImpl">
+		<property name="cdDutyDictDAO" ref="cdDutyDictDAO" />
+		<property name="cdPersonDictDAO" ref="cdPersonDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- post -->
+	<bean id="postImpl" class="cn.superion.center.deptPerson.service.PostImpl">
+		<property name="cdPostDictDAO" ref="cdPostDictDAO" />
+		<property name="cdPersonDictDAO" ref="cdPersonDictDAO" />
+		<property name="cdDeptDictDAO" ref="cdDeptDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- technPost -->
+	<bean id="technPostImpl" class="cn.superion.center.deptPerson.service.TechnPostImpl">
+		<property name="cdTechnPostDictDAO" ref="cdTechnPostDictDAO" />
+		<property name="cdPersonDictDAO" ref="cdPersonDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+</beans>

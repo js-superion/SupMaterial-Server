@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="eqClassDictDAO" class="cn.superion.equipment.dao.EqClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqNationClassDictDAO" class="cn.superion.equipment.dao.EqNationClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqStatusDictDAO" class="cn.superion.equipment.dao.EqStatusDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqClassAbcDictDAO" class="cn.superion.equipment.dao.EqClassAbcDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqChangeTypeDictDAO" class="cn.superion.equipment.dao.EqChangeTypeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqJobTypeDictDAO" class="cn.superion.equipment.dao.EqJobTypeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqJobGroupDictDAO" class="cn.superion.equipment.dao.EqJobGroupDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqRunStatusDictDAO" class="cn.superion.equipment.dao.EqRunStatusDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqFaultTypeDictDAO" class="cn.superion.equipment.dao.EqFaultTypeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqFaultReasonDictDAO" class="cn.superion.equipment.dao.EqFaultReasonDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqEquipmentTypeDAO" class="cn.superion.equipment.dao.EqEquipmentTypeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqPositionDictDAO" class="cn.superion.equipment.dao.EqPositionDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqCurrentRcptNoDAO" class="cn.superion.equipment.dao.EqCurrentRcptNoDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqJobContentDAO" class="cn.superion.equipment.dao.EqJobContentDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqJobContentItemDAO" class="cn.superion.equipment.dao.EqJobContentItemDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqJobContentItemPartDAO" class="cn.superion.equipment.dao.EqJobContentItemPartDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqJobPlanDAO" class="cn.superion.equipment.dao.EqJobPlanDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqJobPlanItemDAO" class="cn.superion.equipment.dao.EqJobPlanItemDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqJobPlanItemPartDAO" class="cn.superion.equipment.dao.EqJobPlanItemPartDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqFaultDetailDAO" class="cn.superion.equipment.dao.EqFaultDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqJobBillDAO" class="cn.superion.equipment.dao.EqJobBillDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqJobBillItemDAO" class="cn.superion.equipment.dao.EqJobBillItemDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqJobBillItemPartDAO" class="cn.superion.equipment.dao.EqJobBillItemPartDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqMeasurePointDAO" class="cn.superion.equipment.dao.EqMeasurePointDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqMeasureMasterDAO" class="cn.superion.equipment.dao.EqMeasureMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqMeasureDetailDAO" class="cn.superion.equipment.dao.EqMeasureDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vEqMeasureDAO" class="cn.superion.equipment.dao.VEqMeasureDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqFaultMasterDAO" class="cn.superion.equipment.dao.EqFaultMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vEqFaultDAO" class="cn.superion.equipment.dao.VEqFaultDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqRunMasterDAO" class="cn.superion.equipment.dao.EqRunMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqRunDetailDAO" class="cn.superion.equipment.dao.EqRunDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vEqRunDAO" class="cn.superion.equipment.dao.VEqRunDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqEquipmentDAO" class="cn.superion.equipment.dao.EqEquipmentDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqEquipmentFilesDAO" class="cn.superion.equipment.dao.EqEquipmentFilesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqChangeMasterDAO" class="cn.superion.equipment.dao.EqChangeMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqChangeDetailDAO" class="cn.superion.equipment.dao.EqChangeDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqSparePartsDetailDAO" class="cn.superion.equipment.dao.EqSparePartsDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+			</bean>
+	<bean id="eqSparePartsMasterDAO" class="cn.superion.equipment.dao.EqSparePartsMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />	
+			</bean>
+	<bean id="vEqSpareDAO" class="cn.superion.equipment.dao.VEqSpareDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqUnitDictDAO" class="cn.superion.equipment.dao.EqUnitDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="eqRepairApplyDAO" class="cn.superion.equipment.dao.EqRepairApplyDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	<bean id="eqRepairDAO" class="cn.superion.equipment.dao.EqRepairDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	<bean id="eqTestDAO" class="cn.superion.equipment.dao.EqTestDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	<bean id="eqTestFilesDAO" class="cn.superion.equipment.dao.EqTestFilesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+</beans>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xls>
+	<sheets>
+		<sheet name="Sheet1" index="1">
+			<table dataStartCell="A2">
+				<!--index,type和zhName仅为描述,type是cell的数据类型,空为字符串,数字为Number,日期为Date -->
+				<column name="equipmentCode" index="1" type="" zhName="设备编码" />
+				<column name="equipmentName" index="2" type="" zhName="设备名称" />
+				<column name="equipmentClass" index="3" type="" zhName="设备类别（会计科目）" />
+				<column name="brandName" index="4" type="" zhName="品牌" />
+				<column name="equipmentSpec" index="5" type="" zhName="型号" />
+				<column name="originalValue" index="6" type="Number" zhName="设备价值" />
+				<column name="measureSign" index="7" type="" zhName="是否为计量设备" />
+				<column name="equipmentStatus" index="8" type="" zhName="设备状态" />
+				<column name="usedDeptName" index="9" type="" zhName="使用科室" />
+				<column name="positionCodeName" index="10" type="" zhName="存放位置" />
+				<column name="chargePersonName" index="11" type="" zhName="负责人" />
+				<column name="serialNumber" index="12" type="" zhName="序列号" />
+				<column name="motorPower" index="13" type="Number" zhName="功率" />
+				<column name="supplier" index="14" type="" zhName="供货商" />
+				<column name="manufacturer" index="15" type="" zhName="生产商" />
+				<column name="dateOfProduction" index="16" type="Date" zhName="出厂日期" />
+				<column name="dateOfPurchase" index="17" type="Date" zhName="购买日期" />
+				<column name="verifyDate" index="18" type="Date" zhName="验收日期" />
+				<column name="serviceLife" index="19" type="Number" zhName="使用年限" />
+				<column name="guaranteeCutOffDate" index="20" type="Date" zhName="保修截止日期" />
+				<column name="testUnit" index="21" type="" zhName="检测单位" />
+				<column name="testDate" index="22" type="Date" zhName="检测日期" />
+				<column name="testValDate" index="23" type="Date" zhName="检测有效期" />
+				<column name="testCertifyNo" index="24" type="" zhName="检测证书编号" />
+				<column name="testRes" index="25" type="" zhName="检测结果" />
+				<column name="remark" index="26" type="" zhName="备注" />
+				
+			</table>
+		</sheet>
+	</sheets>
+</xls>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/flex 
+	http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+	<!-- Service --> 
+	<bean id="materialCardImpl" class="cn.superion.center.material.service.MaterialCardImpl">
+		<property name="cdMaterialCardDAO" ref="cdMaterialCardDAO" />
+		<property name="cdMaterialCardLogDAO" ref="cdMaterialCardLogDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<bean id="materialClassImpl" class="cn.superion.center.material.service.MaterialClassImpl">
+		<property name="cdMaterialClassDAO" ref="cdMaterialClassDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<bean id="materialDictImpl" class="cn.superion.center.material.service.MaterialDictImpl">
+		<property name="cdMaterialDictDAO" ref="cdMaterialDictDAO" />
+		<property name="cdMaterialDictLogDAO" ref="cdMaterialDictLogDAO" />
+		<flex:remoting-destination />
+	</bean>
+</beans>

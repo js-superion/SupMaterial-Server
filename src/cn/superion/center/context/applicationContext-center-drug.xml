@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/flex 
+	http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+	<!-- Service --> 
+	<!-- 药品分类 -->
+	<bean id="centerDrugClassImpl" class="cn.superion.center.drug.service.DrugClassImpl">
+		<property name="classDAO" ref="cdDrugClassDictDAO" />
+		<property name="drugDAO" ref="cdDrugDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 药品剂量单位 -->
+	<bean id="centerDrugDosageImpl" class="cn.superion.center.drug.service.DrugDosageImpl">
+		<property name="dosageDAO" ref="cvDrugDosageDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 药品剂型分类 -->
+	<bean id="centerDrugFormImpl" class="cn.superion.center.drug.service.DrugFormImpl">
+		<property name="formDAO" ref="cvDrugFormDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 药品套餐 -->
+	<bean id="centerDrugGroupImpl" class="cn.superion.center.drug.service.DrugGroupImpl">
+		<property name="masterDAO" ref="cdDrugGroupMasterDAO" />
+		<property name="detailDAO" ref="cdDrugGroupDetailDAO" />
+		<property name="cdDrugDictDAO" ref="cdDrugDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+
+	<!-- 药品档案 -->
+	<bean id="centerDrugImpl" class="cn.superion.center.drug.service.DrugImpl">
+		<property name="drugDAO" ref="cdDrugDictDAO" />
+		<property name="nameDAO" ref="cdDrugNameDictDAO" />
+		<property name="drugInfoDAO" ref="cdDrugInfoDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 药品毒理分类 -->
+	<bean id="centerDrugToxiImpl" class="cn.superion.center.drug.service.DrugToxiImpl">
+		<property name="toxiDAO" ref="cvDrugToxiDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 药品计量单位 -->
+	<bean id="centerDrugUnitsImpl" class="cn.superion.center.drug.service.DrugUnitsImpl">
+		<property name="unitsDAO" ref="cvDrugUnitsDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 药品用途分类-->
+	<bean id="centerDrugUseImpl" class="cn.superion.center.drug.service.DrugUseImpl">
+		<property name="useDAO" ref="cvDrugUseDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+</beans>

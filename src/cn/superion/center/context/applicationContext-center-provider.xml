@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/flex 
+	http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+	<!-- Service -->
+	<!-- areaClass --> 
+	<bean id="areaClassImpl" class="cn.superion.center.provider.service.AreaClassImpl">
+		<property name="cdAreaClassDAO" ref="cdAreaClassDAO"/>
+		<property name="cdProviderDAO" ref="cdProviderDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- provider -->
+	<bean id="providerImpl" class="cn.superion.center.provider.service.ProviderImpl">
+		<property name="cdProviderDAO" ref="cdProviderDAO"/>
+		<property name="cdProviderFilesDAO" ref="cdProviderFilesDAO"/>
+		<property name="cdProviderMaterialDAO" ref="cdProviderMaterialDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- occupationClass -->
+	<bean id="occupClassImpl" class="cn.superion.center.provider.service.OccupClassImpl">
+		<property name="cdOccupationClassDAO" ref="cdOccupationClassDAO" />
+		<property name="cdProviderDAO" ref="cdProviderDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- providerClass -->
+	<bean id="providerClassImpl" class="cn.superion.center.provider.service.ProviderClassImpl">
+		<property name="cdProviderClassDAO" ref="cdProviderClassDAO" />
+		<property name="cdProviderDAO" ref="cdProviderDAO"/>
+		<flex:remoting-destination />
+	</bean>
+</beans>

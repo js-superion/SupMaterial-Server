@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/flex 
+	http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+
+	<!-- DAO 注意：所有中心管理系统的 Dao放入此文件中 -->
+	<!-- 诊疗部分的DAO -->
+	<!-- clinicDict -->
+	<bean id="cdClinicDictDAO" class="cn.superion.center.clinic.dao.CdClinicDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- clinicName-->
+	<bean id="cdClinicNameDictDAO" class="cn.superion.center.clinic.dao.CdClinicNameDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- vCdClinicDictDAO-->
+	<bean id="vCdClinicDictDAO" class="cn.superion.center.clinic.dao.VCdClinicDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- clinicItemClass -->
+	<bean id="cdClinicItemClassDictDAO" class="cn.superion.center.clinic.dao.CdClinicItemClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- clinicUnits-->
+	<bean id="cvClinicUnitsDictDAO" class="cn.superion.center.clinic.dao.CvClinicUnitsDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- clinicGroupMaster -->
+	<bean id="cdClinicGroupMasterDAO" class="cn.superion.center.clinic.dao.CdClinicGroupMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- clinicGroupDetail -->
+	<bean id="cdClinicGroupDetailDAO" class="cn.superion.center.clinic.dao.CdClinicGroupDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="clinicLabelMasterDictDAO" class="cn.superion.center.clinic.dao.ClinicLabelMasterDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- clinicInsuranceDict-->
+	<bean id="cdClinicInsuranceDictDAO" class="cn.superion.center.clinic.dao.CdClinicInsuranceDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- clinicInsuranceDict-->
+	<bean id="cdClinicVsInsuranceDAO" class="cn.superion.center.clinic.dao.CdClinicVsInsuranceDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 药品字典部分的DAO -->
+	<!-- drugDict -->
+	<bean id="cdDrugDictDAO" class="cn.superion.center.drug.dao.CdDrugDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- drugName -->
+	<bean id="cdDrugNameDictDAO" class="cn.superion.center.drug.dao.CdDrugNameDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- VCdDrugDictDAO -->
+	<bean id="vCdDrugDictDAO" class="cn.superion.center.drug.dao.VCdDrugDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- drugInfo-->
+	<bean id="cdDrugInfoDictDAO" class="cn.superion.center.drug.dao.CdDrugInfoDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- drugClass -->
+	<bean id="cdDrugClassDictDAO" class="cn.superion.center.drug.dao.CdDrugClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- cvDrugToxiDict -->
+	<bean id="cvDrugToxiDictDAO" class="cn.superion.center.drug.dao.CvDrugToxiDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- cvDrugFormDict -->
+	<bean id="cvDrugFormDictDAO" class="cn.superion.center.drug.dao.CvDrugFormDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- cvDrugUseDict -->
+	<bean id="cvDrugUseDictDAO" class="cn.superion.center.drug.dao.CvDrugUseDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- cvDrugDosageDict -->
+	<bean id="cvDrugDosageDictDAO" class="cn.superion.center.drug.dao.CvDrugDosageDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- cvDrugUnits -->
+	<bean id="cvDrugUnitsDictDAO" class="cn.superion.center.drug.dao.CvDrugUnitsDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- drugGroupMaster -->
+	<bean id="cdDrugGroupMasterDAO" class="cn.superion.center.drug.dao.CdDrugGroupMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- drugGroupDetail -->
+	<bean id="cdDrugGroupDetailDAO" class="cn.superion.center.drug.dao.CdDrugGroupDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- drugInsurance -->
+	<bean id="cdDrugInsuranceDictDAO" class="cn.superion.center.drug.dao.CdDrugInsuranceDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- CdDrugVsInsuranceDAO -->
+	<bean id="cdDrugVsInsuranceDAO" class="cn.superion.center.drug.dao.CdDrugVsInsuranceDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 配置部分的DAO -->
+	<!-- deptVsUser -->
+	<bean id="cdDeptVsUserDAO" class="cn.superion.center.config.dao.CdDeptVsUserDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- deptVsWard -->
+	<bean id="cdDeptVsWardDAO" class="cn.superion.center.config.dao.CdDeptVsWardDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- cdFramExam -->
+	<bean id="cdFramExamDictDAO" class="cn.superion.center.config.dao.CdFramExamDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- CdUsedDiseaseDictDAO -->
+	<bean id="cdUsedDiseaseDictDAO" class="cn.superion.center.config.dao.CdUsedDiseaseDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- cdHospital -->
+	<bean id="cdHospitalDictDAO" class="cn.superion.center.config.dao.CdHospitalDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- inRcptClass -->
+	<bean id="cdInRcptClassDictDAO" class="cn.superion.center.config.dao.CdInRcptClassDictDAO"
+		parent="baseHibernateDao" />
+	<!-- cdMainDescriDict -->
+	<bean id="cdMainDescriDictDAO" class="cn.superion.center.config.dao.CdMainDescriDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- outRcptClass -->
+	<bean id="cdOutRcptClassDictDAO" class="cn.superion.center.config.dao.CdOutRcptClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- reckoClass -->
+	<bean id="cdReckoClassDictDAO" class="cn.superion.center.config.dao.CdReckoClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- cdAccountClassDictDAO -->
+	<bean id="cdAccountClassDictDAO" class="cn.superion.center.config.dao.CdAccountClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- cdMrFeeClassDictDAO -->
+	<bean id="cdMrFeeClassDictDAO" class="cn.superion.center.config.dao.CdMrFeeClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- cdClinicClassDictDAO -->
+	<bean id="cdClinicClassDictDAO" class="cn.superion.center.config.dao.CdClinicClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+	<!-- reckoStand -->
+	<bean id="cdReckoStandDictDAO" class="cn.superion.center.config.dao.CdReckoStandDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- storageDict -->
+	<bean id="cdStorageDictDAO" class="cn.superion.center.config.dao.CdStorageDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- storagePosition -->
+	<bean id="cdStoragePositionDAO" class="cn.superion.center.config.dao.CdStoragePositionDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- storageRd -->
+	<bean id="cdStorageRdDAO" class="cn.superion.center.config.dao.CdStorageRdDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- storageVsUser -->
+	<bean id="cdStorageVsUserDAO" class="cn.superion.center.config.dao.CdStorageVsUserDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- sysParam -->
+	<bean id="cdSysParamDAO" class="cn.superion.center.config.dao.CdSysParamDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cdUseWayDetailDAO" class="cn.superion.center.config.dao.CdUseWayDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- wardVsDispe -->
+	<bean id="cdWardVsDispeDAO" class="cn.superion.center.config.dao.CdWardVsDispeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- WardVsUser -->
+	<bean id="cdWardVsUserDAO" class="cn.superion.center.config.dao.CdWardVsUserDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- vCdUseWayDetailDAO -->
+	<bean id="vCdUseWayDetailDAO" class="cn.superion.center.config.dao.VCdUseWayDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- vdeptVsWard -->
+	<bean id="vDeptVsWardDAO" class="cn.superion.center.config.dao.VDeptVsWardDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- vdispensary -->
+	<bean id="vDispensaryDAO" class="cn.superion.center.config.dao.VDispensaryDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- vwardVsDept -->
+	<bean id="vWardVsDeptDAO" class="cn.superion.center.config.dao.VWardVsDeptDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- CdChargeClassDict -->
+	<bean id="cdChargeClassDictDAO" class="cn.superion.center.config.dao.CdChargeClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 部门人员的DAO -->
+	<!-- cdAreaDict -->
+	<bean id="cdAreaDictDAO" class="cn.superion.center.deptPerson.dao.CdAreaDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- dept -->
+	<bean id="cdDeptDictDAO" class="cn.superion.center.deptPerson.dao.CdDeptDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- duty -->
+	<bean id="cdDutyDictDAO" class="cn.superion.center.deptPerson.dao.CdDutyDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- person -->
+	<bean id="cdPersonDictDAO" class="cn.superion.center.deptPerson.dao.CdPersonDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- personClass -->
+	<bean id="cdPersonClassDictDAO" class="cn.superion.center.deptPerson.dao.CdPersonClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- post -->
+	<bean id="cdPostDictDAO" class="cn.superion.center.deptPerson.dao.CdPostDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- technPost -->
+	<bean id="cdTechnPostDictDAO" class="cn.superion.center.deptPerson.dao.CdTechnPostDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- vCdPersonDict -->
+	<bean id="vCdPersonDictDAO" class="cn.superion.center.deptPerson.dao.VCdPersonDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 往来单位部分的DAO -->
+	<!-- areaClass -->
+	<bean id="cdAreaClassDAO" class="cn.superion.center.provider.dao.CdAreaClassDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- occupationClass -->
+	<bean id="cdOccupationClassDAO" class="cn.superion.center.provider.dao.CdOccupationClassDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- providerClass -->
+	<bean id="cdProviderClassDAO" class="cn.superion.center.provider.dao.CdProviderClassDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- provider -->
+	<bean id="cdProviderDAO" class="cn.superion.center.provider.dao.CdProviderDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- CdProviderFilesDAO -->
+	<bean id="cdProviderFilesDAO" class="cn.superion.center.provider.dao.CdProviderFilesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- CdProviderMaterialDAO -->
+	<bean id="cdProviderMaterialDAO" class="cn.superion.center.provider.dao.CdProviderMaterialDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+	<!-- 公共部分的DAO即dataDict -->
+	<bean id="cvAdmCondiDictDAO" class="cn.superion.dataDict.dao.CvAdmCondiDictDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"></ref>
+		</property>
+	</bean>
+	<bean id="cvAdmReasonDictDAO" class="cn.superion.dataDict.dao.CvAdmReasonDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvAnestWayDictDAO" class="cn.superion.dataDict.dao.CvAnestWayDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvAreaDiagInfoDAO" class="cn.superion.dataDict.dao.CvAreaDiagInfoDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvAreaDictDAO" class="cn.superion.dataDict.dao.CvAreaDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvBloodDictDAO" class="cn.superion.dataDict.dao.CvBloodDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvBloodTypeDictDAO" class="cn.superion.dataDict.dao.CvBloodTypeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvCaseTypeDictDAO" class="cn.superion.dataDict.dao.CvCaseTypeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvChargeTypeDictDAO" class="cn.superion.dataDict.dao.CvChargeTypeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvCnwordDictDAO" class="cn.superion.dataDict.dao.CvCnwordDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvContagionDictDAO" class="cn.superion.dataDict.dao.CvContagionDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvCountryDictDAO" class="cn.superion.dataDict.dao.CvCountryDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvCultureDegreeDictDAO" class="cn.superion.dataDict.dao.CvCultureDegreeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvDeformityDictDAO" class="cn.superion.dataDict.dao.CvDeformityDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvDiagCondiDictDAO" class="cn.superion.dataDict.dao.CvDiagCondiDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvDiagTypeDictDAO" class="cn.superion.dataDict.dao.CvDiagTypeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvDisDiagDictDAO" class="cn.superion.dataDict.dao.CvDisDiagDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvDiseaseClassDictDAO" class="cn.superion.dataDict.dao.CvDiseaseClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvDiseaseDictDAO" class="cn.superion.dataDict.dao.CvDiseaseDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvFamilyRelatDictDAO" class="cn.superion.dataDict.dao.CvFamilyRelatDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvFrequencyDictDAO" class="cn.superion.dataDict.dao.CvFrequencyDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvHospitalDeptDictDAO" class="cn.superion.dataDict.dao.CvHospitalDeptDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvHospitalGradeDictDAO" class="cn.superion.dataDict.dao.CvHospitalGradeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvHospitalLevelDictDAO" class="cn.superion.dataDict.dao.CvHospitalLevelDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvIdTypeDictDAO" class="cn.superion.dataDict.dao.CvIdTypeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvInpDisStatusDictDAO" class="cn.superion.dataDict.dao.CvInpDisStatusDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvMaritalStateDictDAO" class="cn.superion.dataDict.dao.CvMaritalStateDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvMdQualityDictDAO" class="cn.superion.dataDict.dao.CvMdQualityDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvNationDictDAO" class="cn.superion.dataDict.dao.CvNationDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvOccupDict2DAO" class="cn.superion.dataDict.dao.CvOccupDict2DAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvOccupDict1DAO" class="cn.superion.dataDict.dao.CvOccupDict1DAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvOpsClassDictDAO" class="cn.superion.dataDict.dao.CvOpsClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvOpsCutDictDAO" class="cn.superion.dataDict.dao.CvOpsCutDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvOpsDictDAO" class="cn.superion.dataDict.dao.CvOpsDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvOpsPartDictDAO" class="cn.superion.dataDict.dao.CvOpsPartDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvPayWayDictDAO" class="cn.superion.dataDict.dao.CvPayWayDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvSexDictDAO" class="cn.superion.dataDict.dao.CvSexDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvTreatResultDictDAO" class="cn.superion.dataDict.dao.CvTreatResultDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvTestSpecimenDictDAO" class="cn.superion.dataDict.dao.CvTestSpecimenDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvUseWayDictDAO" class="cn.superion.dataDict.dao.CvUseWayDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="cvVacciDictDAO" class="cn.superion.dataDict.dao.CvVacciDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvVacciProgrDAO" class="cn.superion.dataDict.dao.CvVacciProgrDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cvVacciTypeDictDAO" class="cn.superion.dataDict.dao.CvVacciTypeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 基础类库工具 -->
+	<bean id="baseToolDAO" class="cn.superion.util.BaseToolDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+	<!-- 系统管理部分的DAO -->
+	<bean id="sysApplicationMenuDAO" class="cn.superion.system.dao.SysApplicationMenuDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysApplicationSubDAO" class="cn.superion.system.dao.SysApplicationSubDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysApplicationVerDAO" class="cn.superion.system.dao.SysApplicationVerDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysDataViewDAO" class="cn.superion.system.dao.SysDataViewDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysRoleDAO" class="cn.superion.system.dao.SysRoleDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysRoleDataDAO" class="cn.superion.system.dao.SysRoleDataDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysRoleViewDAO" class="cn.superion.system.dao.SysRoleViewDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysUnitAppDAO" class="cn.superion.system.dao.SysUnitAppDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysUnitInforDAO" class="cn.superion.system.dao.SysUnitInforDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysUserDAO" class="cn.superion.system.dao.SysUserDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysUserDataViewDAO" class="cn.superion.system.dao.SysUserDataViewDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysUserDeptDAO" class="cn.superion.system.dao.SysUserDeptDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysUserLogDAO" class="cn.superion.system.dao.SysUserLogDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysUserRoleDAO" class="cn.superion.system.dao.SysUserRoleDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysUserWorkLogDAO" class="cn.superion.system.dao.SysUserWorkLogDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysUserUnitDAO" class="cn.superion.system.dao.SysUserUnitDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysUserViewDAO" class="cn.superion.system.dao.SysUserViewDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysUserWardDAO" class="cn.superion.system.dao.SysUserWardDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="sysUserStorageDAO" class="cn.superion.system.dao.SysUserStorageDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 系统通知 -->
+	<bean id="cdNoticeDao" class="cn.superion.notice.dao.CdNoticeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cdNoticeFilesDao" class="cn.superion.notice.dao.CdNoticeFilesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 物资字典部分的DAO -->
+	<!-- cdMaterialCard -->
+	<bean id="cdMaterialCardDAO" class="cn.superion.center.material.dao.CdMaterialCardDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- CdMaterialCardLog -->
+	<bean id="cdMaterialCardLogDAO" class="cn.superion.center.material.dao.CdMaterialCardLogDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- CdMaterialClassDAO -->
+	<bean id="cdMaterialClassDAO" class="cn.superion.center.material.dao.CdMaterialClassDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- CdMaterialDictDAO -->
+	<bean id="cdMaterialDictDAO" class="cn.superion.center.material.dao.CdMaterialDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- CdMaterialDictLogDAO -->
+	<bean id="cdMaterialDictLogDAO" class="cn.superion.center.material.dao.CdMaterialDictLogDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cdWorkClassDictDAO" class="cn.superion.center.config.dao.CdWorkClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cdWorkClassTimeDictDAO" class="cn.superion.center.config.dao.CdWorkClassTimeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="clinicItemDictDAO" class="cn.superion.center.clinic.dao.ClinicItemDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+</beans>

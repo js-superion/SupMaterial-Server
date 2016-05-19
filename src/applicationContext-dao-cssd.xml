@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="cssdEquipmentDictDAO" class="cn.superion.cssd.dao.CssdEquipmentDictDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>	
+	<bean id="cssdPhysicsMasterDAO" class="cn.superion.cssd.dao.CssdPhysicsMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>	 	  
+	<bean id="cssdPhysicsFilesDAO" class="cn.superion.cssd.dao.CssdPhysicsFilesDAO">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>	 	
+	<bean id="cssdPersonArrangeDAO" class="cn.superion.cssd.dao.CssdPersonArrangeDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdPackageDictDAO" class="cn.superion.cssd.dao.CssdPackageDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdPackageClassDictDAO" class="cn.superion.cssd.dao.CssdPackageClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdPackageModeDictDAO" class="cn.superion.cssd.dao.CssdPackageModeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdChemistryMaterialDictDAO" class="cn.superion.cssd.dao.CssdChemistryMaterialDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdAntisepsisDictDAO" class="cn.superion.cssd.dao.CssdAntisepsisDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdSterilizeTypeDictDAO" class="cn.superion.cssd.dao.CssdSterilizeTypeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vCssdPackageDictDetailDAO" class="cn.superion.cssd.dao.VCssdPackageDictDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdPersonTrainDAO" class="cn.superion.cssd.dao.CssdPersonTrainDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdPersonTrainFilesDAO" class="cn.superion.cssd.dao.CssdPersonTrainFilesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdFileClassDictDAO" class="cn.superion.cssd.dao.CssdFileClassDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdWorkRuleMasterDAO" class="cn.superion.cssd.dao.CssdWorkRuleMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdWorkRuleFilesDAO" class="cn.superion.cssd.dao.CssdWorkRuleFilesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdCheckMasterDAO" class="cn.superion.cssd.dao.CssdCheckMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdCheckFilesDAO" class="cn.superion.cssd.dao.CssdCheckFilesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdRetrieveMasterDAO" class="cn.superion.cssd.dao.CssdRetrieveMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdRetrieveDetailDAO" class="cn.superion.cssd.dao.CssdRetrieveDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdDeliverMasterDAO" class="cn.superion.cssd.dao.CssdDeliverMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vCssdRetrieveDAO" class="cn.superion.cssd.dao.VCssdRetrieveDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdStockMasterDAO" class="cn.superion.cssd.dao.CssdStockMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdStockDetailDAO" class="cn.superion.cssd.dao.CssdStockDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="vCssdStockDAO" class="cn.superion.cssd.dao.VCssdStockDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdWashMasterDAO" class="cn.superion.cssd.dao.CssdWashMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdWashDetailDAO" class="cn.superion.cssd.dao.CssdWashDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdPackageMasterDAO" class="cn.superion.cssd.dao.CssdPackageMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdSterilizeMasterDAO" class="cn.superion.cssd.dao.CssdSterilizeMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdPackageDictDetailDAO" class="cn.superion.cssd.dao.CssdPackageDictDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdSpecimenDictDAO" class="cn.superion.cssd.dao.CssdSpecimenDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdTestItemDictDAO" class="cn.superion.cssd.dao.CssdTestItemDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdChemistryTypeDictDAO" class="cn.superion.cssd.dao.CssdChemistryTypeDictDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdBiologyDetialDAO" class="cn.superion.cssd.dao.CssdBiologyDetialDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	<bean id="cssdBiologyFilesDAO" class="cn.superion.cssd.dao.CssdBiologyFilesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	<bean id="cssdBiologyMasterDAO" class="cn.superion.cssd.dao.CssdBiologyMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>		
+	<bean id="cssdChemistryDetailDAO" class="cn.superion.cssd.dao.CssdChemistryDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cssdChemistryMasterDAO" class="cn.superion.cssd.dao.CssdChemistryMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+	<bean id="cssdChemistryFilesDAO" class="cn.superion.cssd.dao.CssdChemistryFilesDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>		
+	<bean id="cssdWashQualityDetailDAO" class="cn.superion.cssd.dao.CssdWashQualityDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>		
+	<bean id="vCssdWashQualityDAO" class="cn.superion.cssd.dao.VCssdWashQualityDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>				
+	<bean id="cssdWashQualityMasterDAO" class="cn.superion.cssd.dao.CssdWashQualityMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>				
+		
+	<bean id="cssdSterilizeEffectDAO" class="cn.superion.cssd.dao.CssdSterilizeEffectDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>				
+			
+	<bean id="cssdSterilizeEffectDetailDAO" class="cn.superion.cssd.dao.CssdSterilizeEffectDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>				
+		<bean id="vCssdSterilizeEffectDAO" class="cn.superion.cssd.dao.VCssdSterilizeEffectDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>				
+	<bean id="vCssdPersonWorkloadDAO" class="cn.superion.cssd.dao.VCssdPersonWorkloadDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>					
+	<bean id="vCssdDeliverStockDAO" class="cn.superion.cssd.dao.VCssdDeliverStockDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>									
+	<bean id="vCssdDeliverStockDetailDAO" class="cn.superion.cssd.dao.VCssdDeliverStockDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>					
+		<bean id="cssdProvideMasterDAO" class="cn.superion.cssd.dao.CssdProvideMasterDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>									
+	<bean id="cssdProvideDetailDAO" class="cn.superion.cssd.dao.CssdProvideDetailDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>	
+</beans>	

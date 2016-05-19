@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/flex 
+	http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+	<bean id="eqBillNoService" class="cn.superion.equipment.common.EqBillNoServiceImpl">
+		<property name="eqCurrentRcptNoDAO" ref="eqCurrentRcptNoDAO"/>
+	</bean>
+	<!-- 设备基础字典 -->
+	<bean id="equipmentDataDictImpl" class="cn.superion.equipment.dataDict.service.EquipmentDataDictImpl">
+		<property name="eqClassDictDAO" ref="eqClassDictDAO" />
+		<property name="eqNationClassDictDAO" ref="eqNationClassDictDAO" />
+		<property name="eqStatusDictDAO" ref="eqStatusDictDAO" />
+		<property name="eqClassAbcDictDAO" ref="eqClassAbcDictDAO" />
+		<property name="eqChangeTypeDictDAO" ref="eqChangeTypeDictDAO" />
+		<property name="eqJobTypeDictDAO" ref="eqJobTypeDictDAO" />
+		<property name="eqJobGroupDictDAO" ref="eqJobGroupDictDAO" />
+		<property name="eqRunStatusDictDAO" ref="eqRunStatusDictDAO" />
+		<property name="eqFaultTypeDictDAO" ref="eqFaultTypeDictDAO" />
+		<property name="eqFaultReasonDictDAO" ref="eqFaultReasonDictDAO" />
+		<property name="eqPositionDictDAO" ref="eqPositionDictDAO" />
+		<property name="eqEquipmentTypeDAO" ref="eqEquipmentTypeDAO" />
+		<property name="eqEquipmentDAO" ref="eqEquipmentDAO"/>
+		<property name="eqJobContentDAO" ref="eqJobContentDAO"/>
+		<property name="baseToolDAO" ref="baseToolDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 设备类别字典 -->
+	<bean id="eqClassDictImpl" class="cn.superion.equipment.system.service.EqClassDictImpl">
+		<property name="eqClassDictDAO" ref="eqClassDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 设备类别字典 -->
+	<bean id="eqNationClassDictImpl" class="cn.superion.equipment.system.service.EqNationClassDictImpl">
+		<property name="eqNationClassDictDAO" ref="eqNationClassDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 设备状态字典 -->
+	<bean id="eqStatusDictImpl" class="cn.superion.equipment.system.service.EqStatusDictImpl">
+		<property name="eqStatusDictDAO" ref="eqStatusDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 设备ABC类别字典 -->
+	<bean id="eqClassAbcDictImpl" class="cn.superion.equipment.system.service.EqClassAbcDictImpl">
+		<property name="eqClassAbcDictDAO" ref="eqClassAbcDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 变更类型字典 -->
+	<bean id="eqChangeTypeDictImpl"
+		class="cn.superion.equipment.system.service.EqChangeTypeDictImpl">
+		<property name="eqChangeTypeDictDAO" ref="eqChangeTypeDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 作业类型字典 -->
+	<bean id="eqJobTypeDictImpl" class="cn.superion.equipment.system.service.EqJobTypeDictImpl">
+		<property name="eqJobTypeDictDAO" ref="eqJobTypeDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 作业小组字典 -->
+	<bean id="eqJobGroupDictImpl" class="cn.superion.equipment.system.service.EqJobGroupDictImpl">
+		<property name="eqJobGroupDictDAO" ref="eqJobGroupDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 设备运行状态字典 -->
+	<bean id="eqRunStatusDictImpl"
+		class="cn.superion.equipment.system.service.EqRunStatusDictImpl">
+		<property name="eqRunStatusDictDAO" ref="eqRunStatusDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 故障类型字典 -->
+	<bean id="eqFaultTypeDictImpl"
+		class="cn.superion.equipment.system.service.EqFaultTypeDictImpl">
+		<property name="eqFaultTypeDictDAO" ref="eqFaultTypeDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 故障原因字典 -->
+	<bean id="eqFaultReasonDictImpl"
+		class="cn.superion.equipment.system.service.EqFaultReasonDictImpl">
+		<property name="eqFaultReasonDictDAO" ref="eqFaultReasonDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 设备位置字典 -->
+	<bean id="eqPositionDictImpl" class="cn.superion.equipment.system.service.EqPositionDictImpl">
+		<property name="eqPositionDictDAO" ref="eqPositionDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+	<!-- 设备类型台账 -->
+	<bean id="equipmentTypeImpl" class="cn.superion.equipment.ledger.service.EquipmentTypeImpl">
+		<property name="eqEquipmentTypeDAO" ref="eqEquipmentTypeDAO" />
+		<property name="eqBillNoService" ref="eqBillNoService"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 设备变更 -->
+	<bean id="eqChangeImpl" class="cn.superion.equipment.ledger.service.EqChangeImpl">
+		<property name="eqChangeMasterDAO" ref="eqChangeMasterDAO"/>
+		<property name="eqChangeDetailDAO" ref="eqChangeDetailDAO"/>
+		<property name="eqEquipmentDAO" ref="eqEquipmentDAO"/>
+		<property name="eqBillNoService" ref="eqBillNoService"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 设备台账 -->
+	<bean id="equipmentImpl" class="cn.superion.equipment.ledger.service.EquipmentImpl">
+		<property name="eqEquipmentDAO" ref="eqEquipmentDAO"/>
+		<property name="eqEquipmentFilesDAO" ref="eqEquipmentFilesDAO"/>
+		<property name="eqBillNoService" ref="eqBillNoService"/>
+		<property name="cdPersonDictDAO" ref="cdPersonDictDAO"/>
+		<property name="cdDeptDictDAO" ref="cdDeptDictDAO"/>
+		<property name="eqStatusDictDAO" ref="eqStatusDictDAO"/>
+		<property name="eqClassDictDAO" ref="eqClassDictDAO"/>
+		<flex:remoting-destination /> 
+	</bean>
+	
+	<bean id="eqUnitDictImpl" class="cn.superion.equipment.spare.service.EqUnitDictImpl">
+		<property name="eqUnitDictDAO" ref="eqUnitDictDAO"/>
+		<flex:remoting-destination /> 
+	</bean>
+	
+	
+	<!-- 作业内容 -->
+	<bean id="eqJobContentImpl" class="cn.superion.equipment.job.service.EqJobContentImpl">
+		<property name="eqSparePartsDetailDAO" ref="eqSparePartsDetailDAO"/>
+		<property name="eqJobContentDAO" ref="eqJobContentDAO"/>
+		<property name="eqJobContentItemDAO" ref="eqJobContentItemDAO"/>
+		<property name="eqJobContentItemPartDAO" ref="eqJobContentItemPartDAO"/>
+		<property name="eqBillNoService" ref="eqBillNoService"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 作业计划 -->
+	<bean id="eqJobPlanImpl" class="cn.superion.equipment.job.service.EqJobPlanImpl">
+		<property name="eqJobPlanDAO" ref="eqJobPlanDAO"/>
+		<property name="eqJobPlanItemDAO" ref="eqJobPlanItemDAO"/>
+		<property name="eqJobPlanItemPartDAO" ref="eqJobPlanItemPartDAO"/>
+		<property name="eqFaultDetailDAO" ref="eqFaultDetailDAO"/>
+		<property name="eqBillNoService" ref="eqBillNoService"/>
+		<property name="eqJobContentDAO" ref="eqJobContentDAO"/>
+		<property name="eqJobContentItemDAO" ref="eqJobContentItemDAO"/>
+		<property name="eqJobContentItemPartDAO" ref="eqJobContentItemPartDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 作业单 -->
+	<bean id="eqJobBillImpl" class="cn.superion.equipment.job.service.EqJobBillImpl">
+		<property name="eqJobBillDAO" ref="eqJobBillDAO"/>
+		<property name="eqJobBillItemDAO" ref="eqJobBillItemDAO"/>
+		<property name="eqJobBillItemPartDAO" ref="eqJobBillItemPartDAO"/>
+		<property name="eqFaultDetailDAO" ref="eqFaultDetailDAO"/>
+		<property name="eqBillNoService" ref="eqBillNoService"/>
+		<property name="eqJobContentDAO" ref="eqJobContentDAO"/>
+		<property name="eqJobContentItemDAO" ref="eqJobContentItemDAO"/>
+		<property name="eqJobContentItemPartDAO" ref="eqJobContentItemPartDAO"/>
+		<property name="eqJobPlanDAO" ref="eqJobPlanDAO"/>
+		<property name="eqJobPlanItemDAO" ref="eqJobPlanItemDAO"/>
+		<property name="eqJobPlanItemPartDAO" ref="eqJobPlanItemPartDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 测量点 -->
+	<bean id="eqMeasurePointImpl" class="cn.superion.equipment.run.service.EqMeasurePointImpl">
+		<property name="eqMeasurePointDAO" ref="eqMeasurePointDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 测量点记录 -->
+	<bean id="eqMeasureImpl" class="cn.superion.equipment.run.service.EqMeasureImpl">
+		<property name="eqMeasureMasterDAO" ref="eqMeasureMasterDAO"/>
+		<property name="eqMeasureDetailDAO" ref="eqMeasureDetailDAO"/>
+		<property name="vEqMeasureDAO" ref="vEqMeasureDAO"/>
+		<property name="eqBillNoService" ref="eqBillNoService"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 故障记录 -->
+	<bean id="eqFaultImpl" class="cn.superion.equipment.run.service.EqFaultImpl">
+		<property name="eqFaultMasterDAO" ref="eqFaultMasterDAO"/>
+		<property name="eqFaultDetailDAO" ref="eqFaultDetailDAO"/>
+		<property name="vEqFaultDAO" ref="vEqFaultDAO"/>
+		<property name="eqBillNoService" ref="eqBillNoService"/>
+		<property name="eqJobPlanImpl" ref="eqJobPlanImpl"/>
+		<property name="eqJobBillImpl" ref="eqJobBillImpl"/>
+		<flex:remoting-destination />
+	</bean>
+	<!-- 运行记录 -->
+	<bean id="eqRunImpl" class="cn.superion.equipment.run.service.EqRunImpl">
+		<property name="eqRunMasterDAO" ref="eqRunMasterDAO"/>
+		<property name="eqRunDetailDAO" ref="eqRunDetailDAO"/>
+		<property name="vEqRunDAO" ref="vEqRunDAO"/>
+		<property name="eqBillNoService" ref="eqBillNoService"/>
+		<flex:remoting-destination />
+		</bean>
+	<!-- 备件记录 -->
+	<bean id="eqSparePartsImpl" class="cn.superion.equipment.spare.service.EqSparePartsImpl">
+		<property name="eqSparePartsMasterDAO" ref="eqSparePartsMasterDAO"/>
+		<property name="eqSparePartsDetailDAO" ref="eqSparePartsDetailDAO"/>
+		<property name="vEqSpareDAO" ref="vEqSpareDAO"/>
+		<flex:remoting-destination />
+		</bean>
+	<!-- 备件需求统计 -->
+	<bean id="eqSpareRequireImpl" class="cn.superion.equipment.spare.service.EqSpareRequireImpl">
+		<property name="vEqFaultDAO" ref="vEqFaultDAO"/>
+		<flex:remoting-destination />
+	</bean>
+	
+	<!-- 维修申请 -->
+	<bean id="eqRepairApplyImpl" class="cn.superion.equipment.run.service.EqRepairApplyImpl">
+		<property name="eqRepairApplyDAO" ref="eqRepairApplyDAO"/>
+		<property name="eqBillNoService" ref="eqBillNoService"/>
+		<flex:remoting-destination />
+	</bean>
+		<!-- 维修处理 -->
+	<bean id="eqRepairImpl" class="cn.superion.equipment.run.service.EqRepairImpl">
+		<property name="eqRepairDAO" ref="eqRepairDAO"/>
+		<property name="eqRepairApplyDAO" ref="eqRepairApplyDAO"/>
+		<property name="eqBillNoService" ref="eqBillNoService"/>
+		<flex:remoting-destination />
+	</bean>
+		<!-- 检测处理 -->
+	<bean id="eqTestImpl" class="cn.superion.equipment.run.service.EqTestImpl">
+		<property name="eqTestDAO" ref="eqTestDAO"/>
+		<property name="eqTestFilesDAO" ref="eqTestFilesDAO"/>
+		<property name="eqEquipmentDAO" ref="eqEquipmentDAO"/>
+		<property name="eqBillNoService" ref="eqBillNoService"/>
+		<flex:remoting-destination />
+	</bean>
+</beans>

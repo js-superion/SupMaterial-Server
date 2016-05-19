@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:flex="http://www.springframework.org/schema/flex"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/flex
+	http://www.springframework.org/schema/flex/spring-flex-1.0.xsd">
+	<!-- service -->
+	<!--baseCommonDictImpl -->
+	<bean id="baseCommonDictImpl" class="cn.superion.dataDict.service.BaseCommonDictImpl">
+		<property name="cvCountryDictDAO" ref="cvCountryDictDAO" />
+		<property name="cvSexDictDAO" ref="cvSexDictDAO" />
+		<property name="cvNationDictDAO" ref="cvNationDictDAO" />
+		<property name="cvIdTypeDictDAO" ref="cvIdTypeDictDAO" />
+		<property name="cvBloodDictDAO" ref="cvBloodDictDAO" />
+		<property name="cvCultrueDegreeDictDAO" ref="cvCultureDegreeDictDAO" />
+		<property name="cvMaritalStateDAO" ref="cvMaritalStateDictDAO" />
+		<property name="cvOccupDict1DAO" ref="cvOccupDict1DAO" />
+		<property name="cvOccupDict2DAO" ref="cvOccupDict2DAO" />
+		<property name="cvDeformityDictDAO" ref="cvDeformityDictDAO" />
+		<property name="cvFamilyRelatDictDAO" ref="cvFamilyRelatDictDAO" />
+		<property name="cvChargeTypeDictDAO" ref="cvChargeTypeDictDAO" />
+		<property name="cvCnwordDictDAO" ref="cvCnwordDictDAO" />
+
+		<property name="sysUnitInforDAO" ref="sysUnitInforDAO" />
+		<property name="sysUserDAO" ref="sysUserDAO" />
+		<property name="cdPersonClassDictDAO" ref="cdPersonClassDictDAO" />
+		<property name="cdTechnPostDictDAO" ref="cdTechnPostDictDAO" />
+		<property name="cdDutyDictDAO" ref="cdDutyDictDAO" />
+
+		<property name="cdProviderClassDAO" ref="cdProviderClassDAO" />
+		<property name="cdAreaClassDAO" ref="cdAreaClassDAO" />
+		<property name="cdOccupationClassDAO" ref="cdOccupationClassDAO" />
+
+		<property name="cdDrugClassDictDAO" ref="cdDrugClassDictDAO" />
+		<property name="cvDrugToxiDictDAO" ref="cvDrugToxiDictDAO" />
+		<property name="cvDrugFormDictDAO" ref="cvDrugFormDictDAO" />
+		<property name="cvDrugUseDictDAO" ref="cvDrugUseDictDAO" />
+
+		<property name="cvDrugDosageDictDAO" ref="cvDrugDosageDictDAO" />
+		<property name="cvDrugUnitsDictDAO" ref="cvDrugUnitsDictDAO" />
+		<property name="cdClinicItemClassDictDAO" ref="cdClinicItemClassDictDAO" />
+		<property name="cvClinicUnitsDictDAO" ref="cvClinicUnitsDictDAO" />
+		
+		<property name="cdOutRcptClassDictDAO" ref="cdOutRcptClassDictDAO" />
+		<property name="cdInRcptClassDictDAO" ref="cdInRcptClassDictDAO" />
+		<property name="cdAccountClassDictDAO" ref="cdAccountClassDictDAO" />
+		<property name="cdMrFeeClassDictDAO" ref="cdMrFeeClassDictDAO" />
+		<property name="cdClinicClassDictDAO" ref="cdClinicClassDictDAO" />
+		
+		<property name="cdStorageRdDAO" ref="cdStorageRdDAO" />
+		<property name="cvHospitalGradeDictDAO" ref="cvHospitalGradeDictDAO" />
+
+		<property name="cvHospitalLevelDictDAO" ref="cvHospitalLevelDictDAO" />
+		<property name="cdHospitalDictDAO" ref="cdHospitalDictDAO" />
+		<property name="cvDiseaseClassDictDAO" ref="cvDiseaseClassDictDAO" />
+		<property name="cvOpsClassDictDAO" ref="cvOpsClassDictDAO" />
+
+
+		<property name="cvOpsPartDictDAO" ref="cvOpsPartDictDAO" />
+		<property name="cvOpsCutDictDAO" ref="cvOpsCutDictDAO" />
+		<property name="cvAnestWayDictDAO" ref="cvAnestWayDictDAO" />
+
+		<property name="cvPayWayDictDAO" ref="cvPayWayDictDAO" />
+		<property name="cvAdmCondiDictDAO" ref="cvAdmCondiDictDAO" />
+		<property name="cvAdmReasonDictDAO" ref="cvAdmReasonDictDAO" />
+		<property name="cvInpDisStatusDictDAO" ref="cvInpDisStatusDictDAO" />
+		<property name="cvDiagTypeDictDAO" ref="cvDiagTypeDictDAO" />
+
+		<property name="cvBloodTypeDictDAO" ref="cvBloodTypeDictDAO" />
+		<property name="cvMdQualityDictDAO" ref="cvMdQualityDictDAO" />
+		<property name="cvDiagCondiDictDAO" ref="cvDiagCondiDictDAO" />
+
+		<property name="cvTreatResultDictDAO" ref="cvTreatResultDictDAO" />
+		<property name="cdDeptDictDAO" ref="cdDeptDictDAO" />
+		<property name="cdPersonDictDAO" ref="cdPersonDictDAO" />
+		<property name="cdProviderDAO" ref="cdProviderDAO" />
+
+		<property name="cdPostDictDAO" ref="cdPostDictDAO" />
+		<property name="cdReckoClassDictDAO" ref="cdReckoClassDictDAO" />
+		<property name="cdStorageDictDAO" ref="cdStorageDictDAO" />
+
+		<property name="cdChargeClassDictDAO" ref="cdChargeClassDictDAO" />
+		<property name="cvUseWayDictDAO" ref="cvUseWayDictDAO" />
+		<property name="cvFrequencyDictDAO" ref="cvFrequencyDictDAO" />
+
+		<property name="cdMaterialClassDAO" ref="cdMaterialClassDAO" />
+		<property name="clinicLabelMasterDictDAO" ref="clinicLabelMasterDictDAO" />
+		<property name="cvTestSpecimenDictDAO" ref="cvTestSpecimenDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+
+	<!-- baseToolImpl -->
+	<bean id="baseToolImpl" class="cn.superion.dataDict.service.BaseToolImpl">
+		<property name="toolDAO" ref="baseToolDAO" />
+		<flex:remoting-destination />
+	</bean>
+
+
+	<!-- baseTreeDictImpl -->
+	<bean id="baseTreeDictImpl" class="cn.superion.dataDict.service.BaseTreeDictImpl">
+		<property name="cdAreaDictDAO" ref="cdAreaDictDAO" />
+		<property name="cvDiseaseClassDictDAO" ref="cvDiseaseClassDictDAO" />
+		<property name="cvDiseaseDictDAO" ref="cvDiseaseDictDAO" />
+		<property name="cvOpsClassDictDAO" ref="cvOpsClassDictDAO" />
+		<property name="cvOpsDictDAO" ref="cvOpsDictDAO" />
+		<flex:remoting-destination />
+	</bean>
+
+	<!-- drugCommonDictImpl -->
+	<bean id="drugCommonDictImpl" class="cn.superion.dataDict.service.DrugCommonDictImpl">
+		<property name="vCdDrugDictDAO" ref="vCdDrugDictDAO" />
+		<property name="cdDrugGroupMasterDAO" ref="cdDrugGroupMasterDAO" />
+		<property name="cdDrugVsInsuranceDAO" ref="cdDrugVsInsuranceDAO" />
+		<property name="iUseWayDetail" ref="centerUseWayDetailImpl" />
+		<property name="iDrugGroup" ref="centerDrugGroupImpl" />
+		<flex:remoting-destination />
+	</bean>
+
+	<!-- clinicCommonDictImpl -->
+	<bean id="clinicCommonDictImpl" class="cn.superion.dataDict.service.ClinicCommonDictImpl">
+		<property name="vCdClinicDictDAO" ref="vCdClinicDictDAO" />
+		<property name="cdClinicGroupMasterDAO" ref="cdClinicGroupMasterDAO" />
+		<property name="cdClinicVsInsuranceDAO" ref="cdClinicVsInsuranceDAO" />
+		<property name="iClinicGroup" ref="centerClinicGroupImpl" />
+		<flex:remoting-destination />
+	</bean>
+
+</beans>

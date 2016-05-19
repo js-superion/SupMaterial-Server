@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="lobHandler" ref="lobHandler"/>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.Oracle9iDialect
+				</prop>
+				<prop key="show_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingLocations">
+			<list>
+				<value>classpath*:cn/superion/system/entity/*.hbm.xml</value>
+				<value>classpath*:cn/superion/center/clinic/entity/*.hbm.xml</value>
+				<value>classpath*:cn/superion/center/config/entity/*.hbm.xml</value>
+				<value>classpath*:cn/superion/center/material/entity/*.hbm.xml</value>
+				<value>classpath*:cn/superion/center/deptPerson/entity/*.hbm.xml
+				</value>
+				<value>classpath*:cn/superion/center/provider/entity/*.hbm.xml
+				</value>
+				<value>classpath*:cn/superion/center/drug/entity/*.hbm.xml</value>
+				<value>classpath*:cn/superion/dataDict/entity/*.hbm.xml</value>
+				<value>classpath*:cn/superion/notice/entity/*.hbm.xml</value>
+			</list>
+		</property>
+		
+		<!-- Hibernate映射文件路径 -->
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:cn/superion/material/entity</value>
+				<value>classpath:cn/superion/materialDept/entity</value>
+				<value>classpath:cn/superion/cssd/entity</value>
+				<value>classpath:cn/superion/equipment/entity</value>
+			</list>
+		</property>
+	</bean>
+	<!--
+		Maps request paths at /messagebroker to the BlazeDS MessageBroker
+	-->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>/messagebroker/*=_messageBroker</value>
+		</property>
+	</bean>
+	<bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.C3P0NativeJdbcExtractor">
+	</bean>
+	<bean id="lobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler" lazy-init="true">
+		<property name="nativeJdbcExtractor" ref="nativeJdbcExtractor"/>
+	</bean>
+	<!-- Dispatches requests mapped to a MessageBroker -->
+	<bean class="org.springframework.flex.servlet.MessageBrokerHandlerAdapter" />
+
+	<!-- Bootstraps and exposes the BlazeDS MessageBroker -->
+	<bean id="_messageBroker " class="org.springframework.flex.core.MessageBrokerFactoryBean" />
+
+	<!-- 合法登录用户验证 -->
+	<bean id="userAspect" class="cn.superion.base.LoginCheckAspect" />
+	<!-- AOP -->
+	<aop:config>
+		<aop:aspect ref="userAspect">
+			<!-- 配置pointcut,即切入点，对哪些类的哪些方法起到AOP的作用-->
+			<aop:pointcut id="userServiceMethods"
+				expression="execution(public cn.superion.base.ReObject cn..*Impl.*(..))" />
+			<aop:around pointcut-ref="userServiceMethods" method="arround" />
+		</aop:aspect>
+	</aop:config>
+
+	<!-- 全注解的事务配置管理 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<aop:config>
+		<aop:advisor
+			pointcut="execution(public cn.superion.base.ReObject cn..*Impl.*(..))"
+			advice-ref="txAdvice" />
+	</aop:config>
+
+	<tx:advice id="txAdvice">
+		<tx:attributes>
+			<tx:method name="save*" />
+			<tx:method name="del*" />
+			<tx:method name="update*" />
+			<tx:method name="doLogin*" />
+			<tx:method name="verify*" />
+			<tx:method name="cancel*" />
+			<tx:method name="refund*" />
+			<tx:method name="isUser" read-only="true" />
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="downLoad*" read-only="true" />
+			<tx:method name="print*" read-only="true" />
+			<tx:method name="import*" read-only="true" />
+			<tx:method name="check*"/>
+			<tx:method name="autoBuild*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- BaseHibernateDAO -->
+	<bean id="baseHibernateDao" class="cn.superion.util.BaseHibernateDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 公共处理weboffice客户端请求 -->
+	<bean id="webBean" class="cn.superion.webOfficeServer.bean.WebOfficeBean">
+	</bean>
+</beans>
