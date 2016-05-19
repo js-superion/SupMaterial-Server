@@ -450,7 +450,7 @@ public class SendMaterialImpl implements ISendMaterial {
 	@Override
 	public ReObject verifySupplyDetails(String autoId,List<Map<String,Object>> groupItems) {
 		// TODO Auto-generated method stub
-		ReObject ro = new ReObject("验收审核操作，先更新，后写入出库明细");//
+		ReObject ro = new ReObject("验收审核1操作，先更新，后写入出库明细");//
 		String unitsCode =SessionUtil.getUnitsCode();
 		for (Map<String, Object> map : groupItems) {
 			String mainProvider = (String) map.get("mainProvider");
