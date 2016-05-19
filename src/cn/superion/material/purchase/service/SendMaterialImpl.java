@@ -498,7 +498,11 @@ public class SendMaterialImpl implements ISendMaterial {
 				rdsDetails.add(item);
 			}
 			if(providerName!=null && !"".equals(providerName)){
-				if(!providerName.equals("仓库直供")){
+				if(providerName.equals("仓库直供")){
+					
+					initMaterialRds2(master,"2", "210", "211", "配送出库",rdsDetails);
+				}else{
+					
 					initMaterialRds2(master,"1", "110", "111", "配送入库",rdsDetails);
 					initMaterialRds2(master,"2", "210", "211", "配送出库",rdsDetails);
 				}
@@ -639,37 +643,37 @@ public class SendMaterialImpl implements ISendMaterial {
 			}
 			//
 			
-			//根据供货单位名称，判断是否是走仓库库存
-			if(providerName!=null && !"".equals(providerName)){
-				if(providerName.equals("仓库直供")){
-					List<MaterialSupplierDetail> rdsDetails = new ArrayList<MaterialSupplierDetail>();
-					for (Map<String,Object> detail : details) {
-						String materialName = (String) detail.get("materialName");
-						String materialCode = (String) detail.get("materialCode");
-						String materialId = (String) detail.get("materialId");
-						String materialUnits = (String) detail.get("materialUnits");
-						String materialSpec = (String) detail.get("materialSpec");
-						String materialClass = (String) detail.get("materialClass");
-						Double tradeMoney = Double.valueOf(detail.get("tradeMoney")==null?"0":detail.get("tradeMoney").toString()) ;
-						Double tradePrice = Double.valueOf(detail.get("tradePrice")==null?"0":detail.get("tradePrice").toString()) ;
-						Double sendAmount =Double.valueOf(detail.get("sendAmount")==null?"0":detail.get("sendAmount").toString()) ;
-						MaterialSupplierDetail item = new MaterialSupplierDetail();
-						item.setCurrentStockAmount(0.0);
-						item.setMaterialClass(materialClass);
-						item.setMaterialCode(materialCode);
-						item.setMaterialName(materialName);
-						item.setMaterialSpec(materialSpec);
-						item.setMaterialId(materialId);
-						item.setMaterialUnits(materialUnits);
-						item.setSendAmount(sendAmount);
-						item.setTradeMoney(tradeMoney);
-						item.setTradePrice(tradePrice);
-						rdsDetails.add(item);
-					}
-					
-					initMaterialRds2(master,"2", "210", "211", "仓库直接出库",rdsDetails);
-				}
-			}
+//			//根据供货单位名称，判断是否是走仓库库存
+//			if(providerName!=null && !"".equals(providerName)){
+//				if(providerName.equals("仓库直供")){
+//					List<MaterialSupplierDetail> rdsDetails = new ArrayList<MaterialSupplierDetail>();
+//					for (Map<String,Object> detail : details) {
+//						String materialName = (String) detail.get("materialName");
+//						String materialCode = (String) detail.get("materialCode");
+//						String materialId = (String) detail.get("materialId");
+//						String materialUnits = (String) detail.get("materialUnits");
+//						String materialSpec = (String) detail.get("materialSpec");
+//						String materialClass = (String) detail.get("materialClass");
+//						Double tradeMoney = Double.valueOf(detail.get("tradeMoney")==null?"0":detail.get("tradeMoney").toString()) ;
+//						Double tradePrice = Double.valueOf(detail.get("tradePrice")==null?"0":detail.get("tradePrice").toString()) ;
+//						Double sendAmount =Double.valueOf(detail.get("sendAmount")==null?"0":detail.get("sendAmount").toString()) ;
+//						MaterialSupplierDetail item = new MaterialSupplierDetail();
+//						item.setCurrentStockAmount(0.0);
+//						item.setMaterialClass(materialClass);
+//						item.setMaterialCode(materialCode);
+//						item.setMaterialName(materialName);
+//						item.setMaterialSpec(materialSpec);
+//						item.setMaterialId(materialId);
+//						item.setMaterialUnits(materialUnits);
+//						item.setSendAmount(sendAmount);
+//						item.setTradeMoney(tradeMoney);
+//						item.setTradePrice(tradePrice);
+//						rdsDetails.add(item);
+//					}
+//					
+//					initMaterialRds2(master,"2", "210", "211", "仓库直接出库",rdsDetails);
+//				}
+//			}
 			
 		}
 		
