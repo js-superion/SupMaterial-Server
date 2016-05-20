@@ -63,6 +63,7 @@ public class MaterialProvideMasterDAO extends BaseHibernateDAO  {
 		String beginBillDate = (String)conditions.get("fromDate");
     	String endBillDate = (String)conditions.get("toDate");
 		String currentStatus = (String)conditions.get("currentStatus");
+		String detailRemark = (String)conditions.get("detailRemark");
 		String storageCode = (String)conditions.get("storageCode");
 		String checkAmountSign = (String)conditions.get("checkAmountSign");
 		String checkSupplySign = (String)conditions.get("checkSupplySign");
@@ -198,6 +199,10 @@ public class MaterialProvideMasterDAO extends BaseHibernateDAO  {
 		}
 		if(flag)
 			shql.append(" and exists(").append(shql2).append(")");
+		if(detailRemark != null && !"".equals(detailRemark)){
+			flag = true;
+			shql2.append(" and d.detailRemark=:detailRemark");
+		}
 		shql.append(" order by m.billDate desc,m.billNo desc");
 		return getSession().createQuery(shql.toString()).setProperties(conditions).list();
 	}
