@@ -201,7 +201,10 @@ public class MaterialProvideMasterDAO extends BaseHibernateDAO  {
 			shql.append(" and exists(").append(shql2).append(")");
 		if(detailRemark != null && !"".equals(detailRemark)){
 			flag = true;
-			shql2.append(" and d.detailRemark=:detailRemark");
+			shql2.append(" and d.detailRemark like '%"+detailRemark+"%'");
+		}
+		if (flag) {
+			shql.append(" and exists(").append(shql2).append(")");// order by d.serialNo 
 		}
 		shql.append(" order by m.billDate desc,m.billNo desc");
 		return getSession().createQuery(shql.toString()).setProperties(conditions).list();
