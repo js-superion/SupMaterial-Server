@@ -62,6 +62,22 @@ public class VMaterialRdsDAO extends BaseHibernateDAO {
 		}
 	}
 
+	
+
+	//查询houqing分类，只要是houqing仓库出库的。
+	public List<Map<String,Object>> findZwClassName(ParameterObject fparameter){
+		String sql = "select substr(t.material_class,0,3) from v_material_rds t where t.storage_code='105' group by substr(t.material_class,0,3) "+
+					 "order by substr(t.material_class,0,3)";
+		SQLQuery sl = getSession().createSQLQuery(sql);
+		List<Object> list = sl.list();
+		List<Map<String,Object>> listMap = new ArrayList<Map<String,Object>>();
+		for(Object item:list){
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("materialClass", item.toString());
+			listMap.add(map);
+		}
+		return listMap;
+	}
 	@SuppressWarnings("unchecked")
 	public List<VMaterialRds> findByExample(VMaterialRds instance) {
 		log.debug("finding VMaterialRds instance by example");
@@ -1009,7 +1025,7 @@ public class VMaterialRdsDAO extends BaseHibernateDAO {
 	}
 	//查询科室，在出库表中存在的。
 	public List<String> findDept(ParameterObject fparameter){
-		String sql = "select t.dept_code from v_material_rds t where t.dept_code is not null and t.storage_code=:storageCode "+
+		String sql = "select t.dept_code from v_material_rds t where t.whole_sale_Money >0 and  t.dept_code is not null and t.storage_code=:storageCode "+
 					 " group by t.dept_code order by t.dept_code";
 		SQLQuery sl = getSession().createSQLQuery(sql);
 		sl.setString("storageCode", (String)fparameter.getConditions().get("storageCode"));
@@ -1078,6 +1094,47 @@ public class VMaterialRdsDAO extends BaseHibernateDAO {
 		}
 		return listMap;
 	}
+	
+	//zongwu仓库下的出库的物资分类和总费用
+	public List<Map<String,Object>> findZwFee(ParameterObject fparameter){
+		
+		Date beginBillDate = (Date)fparameter.getConditions().get("beginBillDate");
+		Date endBillDate = (Date)fparameter.getConditions().get("endBillDate");
+		String unitsCode = (String)fparameter.getConditions().get("deptUnitsCode");
+		List<Map<String,Object>> listMap = new ArrayList<Map<String,Object>>();
+		String sql = "select substr(t.materialClass,0,3),sum(t.wholeSaleMoney) "+
+		"from VMaterialRds  t where t.unitsCode='070102' and mod(length(t.materialClass),2)>0 and t.deptCode = :deptCode and t.billDate >= :beginBillDate " +
+		" and t.billDate <= :endBillDate and t.storageCode = '105' " +
+		" and t.rdFlag='2' and t.currentStatus <>'0' group by substr(t.materialClass,0,3) order by "+
+		" substr(t.materialClass,0,3)";
+		Query sl = getSession().createQuery(sql);
+		List<String> list = findDept(fparameter);
+		for(int i=0;i<list.size();i++){
+			sl.setString("deptCode", list.get(i).toString());
+			sl.setTimestamp("beginBillDate", beginBillDate);
+			sl.setTimestamp("endBillDate", endBillDate);
+//			sl.setString("storageCode", (String)fparameter.getConditions().get("storageCode"));
+			List<Object[]> list1 = sl.list();
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("deptCode", list.get(i));
+			map.put("remark", findDeptRemark(unitsCode,(String)list.get(i)));
+			Double dl = 0.0;
+			if(list1!=null && list1.size()>0){
+				for(int j = 0;j<list1.size();j++){
+					if(list1.get(j)[1]!=null){
+						map.put(list1.get(j)[0].toString(), (Double)list1.get(j)[1]);
+						dl = dl + (Double)(list1.get(j)[1]);
+					}
+				
+				}
+				map.put("sum", dl);
+				listMap.add(map);
+			}
+			
+		}
+		return listMap;
+	}
+	
 	//计算机仓库下的出库的物资分类和总费用
 	public List<Map<String,Object>> findComputerFee(ParameterObject fparameter){
 		

@@ -541,8 +541,8 @@ public class CommMaterialServiceImpl implements ICommMaterialService {
 			detail.setRetailPrice(detail.getTradePrice());
 			detail.setRetailMoney(detail.getTradeMoney());
 			//
-			detail.setWholeSaleMoney(detail.getTradePrice());
-			detail.setWholeSalePrice(detail.getTradeMoney());
+			detail.setWholeSalePrice(detail.getTradePrice());
+			detail.setWholeSaleMoney(detail.getTradeMoney());
 			
 			if (isVerified) {
 				// 若已审核，则更新库存数量

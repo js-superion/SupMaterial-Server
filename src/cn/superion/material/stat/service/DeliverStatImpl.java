@@ -33,6 +33,29 @@ public class DeliverStatImpl implements IDeliverStat {
 		return ro;
 	}
 
+	
+	//查询houqin物资类别，只要是houqin仓库出库的
+	@Override
+	public ReObject findClassByZw(ParameterObject fparameter) {
+		ReObject ro = new ReObject("查询zongwu物资类别");
+		List<Map<String,Object>> data1 = vMaterialRdsDAO.findZwClassName(fparameter);
+		List data = new ArrayList();
+		data.add(data1);
+		ro.setData(data);
+		return ro;
+	}
+	
+	//查询计算机分类费用
+	@Override
+	public ReObject findDeliverStatByZw(ParameterObject fparameter) {
+		ReObject ro = new ReObject("根据科室，物资分类查询费用");
+		List<Map<String,Object>> listMap = vMaterialRdsDAO.findZwFee(fparameter);
+		List data = new ArrayList();
+		data.add(listMap);
+		ro.setData(data);
+		return ro;
+	}
+	
 	@Override
 	public ReObject findDeliverStatListByDept(ParameterObject fparameter) {
 		ReObject ro = new ReObject("根据科室，物资分类查询费用");

@@ -30,6 +30,8 @@ public interface IDeliverStat {
 	 * @return
 	 */
 	ReObject findDeliverStatListByDept(ParameterObject fparameter);
+	ReObject findClassByZw(ParameterObject fparameter);
+	ReObject findDeliverStatByZw(ParameterObject fparameter);
 	/**
 	 * 只查部门
 	 * @param fparameter
