@@ -613,7 +613,8 @@ public class SendMaterialImpl implements ISendMaterial {
 				String materialUnits = (String) detail.get("materialUnits");
 				String materialSpec = (String) detail.get("materialSpec");
 				String materialClass = (String) detail.get("materialClass");
-				Integer amount = (Integer) detail.get("amount");
+//				Integer amount = (Integer) detail.get("amount");
+//				Double amount =Double.valueOf(detail.get("amount")==null?"0":detail.get("amount").toString()) ;
 				
 				Double tradeMoney = Double.valueOf(detail.get("tradeMoney")==null?"0":detail.get("tradeMoney").toString()) ;
 				Double tradePrice = Double.valueOf(detail.get("tradePrice")==null?"0":detail.get("tradePrice").toString()) ;
