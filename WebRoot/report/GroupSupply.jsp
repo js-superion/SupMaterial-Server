@@ -88,7 +88,7 @@ td {
     <td width="220" class="td_column_header">物资名称</td>
     <td width="80" class="td_column_header">规格型号</td>
     <td width="30" class="td_column_header">单位</td>
-    <td width="40 class="td_column_header">数量</td>
+    <td width="40" class="td_column_header">数量</td>
     <td width="50" class="td_column_header">价格</td>
     <td width="50" class="td_column_header">金额</td>
   </tr>

@@ -240,6 +240,9 @@ public class SendMaterialImpl implements ISendMaterial {
 //					materialMaster.setCurrentStatus("3");
 //				}
 			}
+			if(status.equals("9")){//成老师 删除，更新9
+				materialMaster.setCurrentStatus(status);
+			}
 			materialProvideMasterDAO.merge(materialMaster);
 		}
 		return ro;

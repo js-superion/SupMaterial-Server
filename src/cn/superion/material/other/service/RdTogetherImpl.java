@@ -91,7 +91,8 @@ public class RdTogetherImpl implements IRdTogether {
 				&& !operationType.equals(RdConstant.R_AGENCY)
 				&& !operationType.equals(RdConstant.R_DIRECT)
 				&& !operationType.equals(RdConstant.R_SPECIAL)
-				&& !operationType.equals(RdConstant.R_TOGETHER)) {
+				&& !operationType.equals(RdConstant.R_TOGETHER)
+				&& !operationType.equals(RdConstant.D_OTHERS)) {
 			throw new RuntimeException("业务类型必须为101或102或103或106或110！");
 		}
 		SysUser user = SessionUtil.getSysUser();
@@ -158,6 +159,9 @@ public class RdTogetherImpl implements IRdTogether {
 		}
 		receiveMaster.setCurrentStatus(isVerified ? "1" : "0");
 		receiveMaster.setRdFlag(RdConstant.R);
+		if(receiveMaster.getOperationType().equals("109")){
+			receiveMaster.setRemark("其他入库");
+		}
 		//保存入库记录
 		save(receiveMaster, fdetails);
 	
@@ -165,6 +169,11 @@ public class RdTogetherImpl implements IRdTogether {
 		for(MaterialRdsDetail dDetail:deliverDetails){
 			dDetail.setSourceInputAutoId(receiveMainAutoId);
 		}
+		
+		if(receiveMaster.getOperationType().equals("209")){
+			deliverMaster.setRemark("其他出库");
+		}
+		
 		//保存出库记录
 		save(deliverMaster, deliverDetails);
 		
