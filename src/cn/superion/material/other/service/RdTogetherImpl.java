@@ -92,7 +92,8 @@ public class RdTogetherImpl implements IRdTogether {
 				&& !operationType.equals(RdConstant.R_DIRECT)
 				&& !operationType.equals(RdConstant.R_SPECIAL)
 				&& !operationType.equals(RdConstant.R_TOGETHER)
-				&& !operationType.equals(RdConstant.D_OTHERS)) {
+				&& !operationType.equals(RdConstant.D_OTHERS)
+				&& !operationType.equals(RdConstant.R_OTHERS)) {
 			throw new RuntimeException("业务类型必须为101或102或103或106或110！");
 		}
 		SysUser user = SessionUtil.getSysUser();
