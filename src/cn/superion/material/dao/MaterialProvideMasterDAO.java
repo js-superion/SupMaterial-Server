@@ -160,6 +160,9 @@ public class MaterialProvideMasterDAO extends BaseHibernateDAO  {
 			else if(checkAmountSign.equals("8,9")){
 				shql.append(" and checkAmountSign in('8','9')");
 			}
+			else if(checkAmountSign.equals("9,10")){
+				shql.append(" and checkAmountSign in('9','10')");
+			}
 			else{
 				shql.append(" and checkAmountSign in('"+checkAmountSign+"')");
 			}

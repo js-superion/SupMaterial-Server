@@ -163,6 +163,7 @@ public class RdTogetherImpl implements IRdTogether {
 		if(receiveMaster.getOperationType().equals("109")){
 			receiveMaster.setRemark("其他入库");
 		}
+	
 		//保存入库记录
 		save(receiveMaster, fdetails);
 	

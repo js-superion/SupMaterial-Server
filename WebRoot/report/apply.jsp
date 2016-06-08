@@ -88,25 +88,25 @@ text-align: left;
   </tr>
   </c:forEach>
   	<tr height="60">
-    <td colspan="1" width="130" class="td_column_header">申请原因</td>
-    <td colspan="5">&nbsp;</td>
-  </tr>
-    <tr height="60">
-    <td colspan="1" width="130" class="td_column_header">备注内容</td>
-    <td colspan="5">&nbsp;</td>
-  </tr>
+    <td colspan="1" width="130" class="td_column_header">申请原因:</td>
+    <td colspan="5" class="td_column_menu">${printData.remark}</td>
+  </tr>    
   	<tr height="60">
     <td colspan="1" width="130" class="td_column_header">采购部门分管院长</td>
     <td colspan="5">&nbsp;</td>
+  </tr>
+  <tr height="60">
+    <td colspan="1" width="130" class="td_column_header">职能处室审批意见:</td>
+    <td colspan="5" class="td_column_menu">${printData.remark1}</td>
   </tr>
     <tr height="60">
     <td colspan="1" width="130" class="td_column_header">申请部门分管院长</td>
     <td colspan="5">&nbsp;</td>
   </tr>
   	<tr height="30">
-    <td colspan="2" width="80" class="td_column_header">职能处长：</td>
-    <td colspan="3" width="80" class="td_column_header">申请人：</td>
-    <td colspan="2" width="80" class="td_column_header">采购员：</td>
+    <td colspan="2" width="80" class="td_column_header"> </td>
+    <td colspan="3" width="180" class="td_column_header">申请人：${printData.applyPerson}</td>
+    <td colspan="1" width="80" class="td_column_header">采购员：</td>
   </tr>
   
   
