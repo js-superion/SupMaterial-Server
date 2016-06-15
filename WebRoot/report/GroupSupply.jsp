@@ -58,7 +58,7 @@ td {
 
 .td_column_header {
 	font-weight: bold;
-	font-size: 13px
+	font-size: 25px
 }
 .td_right {
 	font-weight: bold;
@@ -81,7 +81,7 @@ td {
   </tr>
   <tr height="30">
     <td colspan="2"  class="td_column_header">领用部门:${printData.deptName}</td>
-    <td colspan="5"  class="td_column_header">打印日期:${printData.printDate}</td>
+    <td colspan="5"  class="td_left">打印日期:${printData.printDate}</td>
   </tr>
   <tr height="30">
     <td width="70" class="td_column_header">物资编码</td>

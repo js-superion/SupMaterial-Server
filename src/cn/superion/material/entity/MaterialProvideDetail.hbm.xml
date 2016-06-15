@@ -116,5 +116,8 @@
         <property name="supplyNo" type="java.lang.String">
             <column name="supply_No" length="20" />
         </property>
+        <property name="currentStatus" type="java.lang.String">
+            <column name="current_Status" length="20" />
+        </property>
     </class>
 </hibernate-mapping>

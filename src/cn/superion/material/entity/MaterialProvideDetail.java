@@ -56,6 +56,7 @@ public class MaterialProvideDetail  implements java.io.Serializable {
  	private String mainProvider;
 	private String supplyNo;
  	private String providerName;
+ 	private String currentStatus;
  	public String getMainProvider() {
 		return mainProvider;
 	}
@@ -151,12 +152,21 @@ public class MaterialProvideDetail  implements java.io.Serializable {
 
         this.chargeSign = chargeSign;
 		this.classOnAccount = classOnAccount;
+		this.currentStatus = currentStatus;
     }
 
    
     // Property accessors
 
-    public String getAutoId() {
+    public String getCurrentStatus() {
+		return currentStatus;
+	}
+
+	public void setCurrentStatus(String currentStatus) {
+		this.currentStatus = currentStatus;
+	}
+
+	public String getAutoId() {
         return this.autoId;
     }
     
