@@ -58,7 +58,7 @@ td {
 
 .td_column_header {
 	font-weight: bold;
-	font-size: 25px
+	font-size: 13px
 }
 .td_right {
 	font-weight: bold;

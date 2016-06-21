@@ -363,16 +363,20 @@ public class RdTogetherImpl implements IRdTogether {
 		ReObject ro = new ReObject("审核当前的整进整出信息");
 		
 		Object[] objs = commMaterialServiceImpl.findById(fstrAutoId);
+		Object [] objs2 = null;
 		//审核出库单据
 		if(objs[1]!=null){
 			List<MaterialRdsDetail> details=(List<MaterialRdsDetail>) objs[1];
 			String dAutoId=details.get(0).getSourceInputAutoId();
-			verify(dAutoId);
+			objs2 = verify(dAutoId);
 		}
 
 		objs = verify(fstrAutoId);
 		List<Object> data = new ArrayList<Object>();
 		data.add(objs[0]);
+		if(objs2!=null){
+			data.add(objs2[0]);
+		}
 		ro.setData(data);
 		return ro;
 	}
@@ -447,7 +451,12 @@ public class RdTogetherImpl implements IRdTogether {
 	public ReObject findRdsMasterListByCondition(ParameterObject fparameter) {
 		ReObject ro = new ReObject("根据条件查询整进整出单据列表");
 		Map<String, Object> condition=fparameter.getConditions();
-		condition.put("remark", "整进整出");
+		String rmk = (String) condition.get("remark");
+		if(rmk!=null && "1".equals(rmk)){
+			condition.put("remark", null);
+		}else{
+			condition.put("remark", "整进整出");
+		}
 		List<Object> data = materialRdsMasterDAO
 				.findAutoIdsByPurchaseConditionToger(SessionUtil.getUnitsCode(),
 						condition);
