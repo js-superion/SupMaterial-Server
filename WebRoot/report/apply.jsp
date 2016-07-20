@@ -37,61 +37,80 @@ table {
 **/
 
 td {
-	text-align: left;
+	text-align: center;
 	line-height: 150%;
 	word-break: break-all;
 	word-wrap: break-word;
 	empty-cells:show;
 }
 
+.td_column_header_title {
+	font-weight: bold;
+	font-size: 25px
+}
 
 .td_column_header {
 	font-weight: bold;
 	font-size: 13px
 }
+
+.td_column_menu {
+text-align: left;
+	font-size: 13px
+}
+
 </style>
 	</head>
  <body>
- <center><label class="td_column_header">${printData.title}</label></center>
+ <center><label class="td_column_header_title">${printData.title}</label></center>
 <table border="1px" bordercolor="#000000" style="font-size: 12px;border-collapse: collapse;">
  <tr height="30">
-    <td colspan="3" width="80" class="td_column_header">申领部门：${printData.deptName}</td>
-    <td colspan="3" width="80" class="td_column_header">打印日期：${printData.printDate}</td>
+    <td colspan="5" width="200" class="td_column_header">申领部门：${printData.deptName}</td>
+    <td colspan="2" width="240" class="td_column_menu">单据编号:${printData.billNo}<p>打印日期：${printData.printDate}</p></td>
   </tr>
   <tr height="30">
-    <td width="120" class="td_column_header">物资名称</td>
-    <td width="80" class="td_column_header">规格型号</td>
-    <td width="80" class="td_column_header">数量</td>
-    <td width="130" class="td_column_header">产地品牌</td>
-    <td width="80" class="td_column_header">预计金额</td>
-    <td width="100" class="td_column_header">备注</td>
+    <td width="130" class="td_column_header">物资名称</td>
+    <td width="90" class="td_column_header">规格型号</td>
+    <td width="50" class="td_column_header">数量</td>
+    <td width="90" class="td_column_header">产地品牌</td>
+    <td width="60" class="td_column_header">预计金额</td>
+    <td width="200" class="td_column_header">明细备注</td>
+    <td width="60" class="td_column_header">审批状态</td>
   </tr>
   <c:forEach items="${printData.dataProvider}" var="item">
   <tr>
-    <td>${item.materialName}</td>
-    <td>${item.materialSpec}</td>
-    <td>${item.sendAmount}</td>
+    <td class="td_column_menu">${item.materialName}</td>
+    <td class="td_column_menu">${item.materialSpec}</td>
+    <td class="td_column_menu">${item.sendAmount}</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td>${item.detailemark}</td>
+    <td class="td_column_menu">${item.detailRemark}</td>
+    <td class="td_column_menu">${item.currentStatus}</td>
     <td></td>
   </tr>
-  
-  <tr height="30">
-    <td colspan="1" width="80" class="td_column_header">申请原因：</td>
-    <td colspan="5" width="80" class="td_column_header">备注内容：</td>
+  </c:forEach>
+  	<tr height="60">
+    <td colspan="1" width="130" class="td_column_header">申请原因:</td>
+    <td colspan="6" class="td_column_menu">${printData.remark}</td>
+  </tr>    
+  	<tr height="60">
+    <td colspan="1" width="130" class="td_column_header">采购部门分管院长</td>
+    <td colspan="6">&nbsp;</td>
   </tr>
-  
-   <tr height="30">
-    <td colspan="1" width="80" class="td_column_header">采购部门分管院长：</td>
-    <td colspan="5" width="80" class="td_column_header">申请部门分管院长：</td>
+  <tr height="60">
+    <td colspan="1" width="130" class="td_column_header">职能处室审批意见:</td>
+    <td colspan="6" class="td_column_menu">${printData.remark1}</td>
   </tr>
-   <tr height="30">
-    <td colspan="1" width="80" class="td_column_header">职能处长：</td>
-    <td colspan="3" width="80" class="td_column_header">申请人：</td>
+    <tr height="60">
+    <td colspan="1" width="130" class="td_column_header">申请部门分管院长</td>
+    <td colspan="6">&nbsp;</td>
+  </tr>
+  	<tr height="30">
+    <td colspan="2" width="80" class="td_column_header"> </td>
+    <td colspan="3" width="180" class="td_column_header">申请人：${printData.applyPerson}</td>
     <td colspan="2" width="80" class="td_column_header">采购员：</td>
   </tr>
-  </c:forEach>
+  
   
 </table>
 </body>

@@ -19,6 +19,80 @@ function PrintDeptGroupInit(map,printFlag) {
 		PrintDeptGroup(map,printFlag);
 	}, 1000);
 }
+
+function reportTitle(){
+	//标题
+	LODOP.ADD_PRINT_TEXT(4,136,275,30,"后勤物资发放明细（科室）");
+	LODOP.SET_PRINT_STYLEA(0,"FontSize",12);
+	LODOP.SET_PRINT_STYLEA(0,"Bold",1);
+	LODOP.SET_PRINT_STYLEA(0,"Horient",2);
+}
+function reportHeader(providerName,deptName,billNo,storageName,currentPage,totalPage){
+	
+	//表头
+	LODOP.ADD_PRINT_TEXT(40,9,280,20,"供货单位："+providerName);
+	LODOP.ADD_PRINT_TEXT(40,300,280,20,"领用部门："+deptName);
+	LODOP.ADD_PRINT_TEXT(40,600,140,20,"单号："+billNo);//杨涛改过，往右边移了，要不部门显示不全
+	LODOP.ADD_PRINT_TEXT(59,10,150,20,"仓库："+storageName);
+	LODOP.ADD_PRINT_TEXT(59,300,71,20,"记 账 人：");
+	LODOP.ADD_PRINT_TEXT(59,600,160,20,"页码："+ "第"+currentPage+"页 / 共"+totalPage+"页");//杨涛改过，往右边移了
+
+	//列头
+	LODOP.ADD_PRINT_TEXT(86,18,34,20,"序号");
+	LODOP.ADD_PRINT_TEXT(86,60,74,20,"物资编码");
+	LODOP.ADD_PRINT_TEXT(86,153,120,20,"物资名称");
+	LODOP.ADD_PRINT_TEXT(86,366,85,20,"规格型号");
+	LODOP.ADD_PRINT_TEXT(86,472,50,20,"数量");
+	LODOP.ADD_PRINT_TEXT(86,537,46,20,"单价");
+	LODOP.ADD_PRINT_TEXT(86,613,53,20,"金额");
+	LODOP.ADD_PRINT_TEXT(86,697,56,20,"备注");
+	//
+	LODOP.ADD_PRINT_LINE(81,14,80,774,0,1);
+	LODOP.ADD_PRINT_LINE(81,602,109,603,0,1);
+	LODOP.ADD_PRINT_LINE(81,534,109,535,0,1);
+	
+	LODOP.ADD_PRINT_LINE(109,14,80,15,0,1);
+	LODOP.ADD_PRINT_LINE(109,351,81,352,0,1);
+	LODOP.ADD_PRINT_LINE(109,140,81,141,0,1);
+	LODOP.ADD_PRINT_LINE(109,466,81,467,0,1);
+	LODOP.ADD_PRINT_LINE(109,51,80,52,0,1);
+	LODOP.ADD_PRINT_LINE(109,691,81,692,0,1);
+	LODOP.ADD_PRINT_LINE(109,775,80,776,0,1);
+
+	LODOP.ADD_PRINT_LINE(110,14,109,776,0,1);
+}
+function reportDetail(detail,j,rowsPerPage,dynamicLineHeight,rowHeight){
+//	LODOP.ADD_PRINT_TEXT(116+30*((j+1)%rowsPerPage),18,27,20,j+1);
+//	LODOP.ADD_PRINT_TEXT(116+30*((j+1)%rowsPerPage),56,81,20,detail.materialCode);//物资编码
+//	LODOP.ADD_PRINT_TEXT(116+30*((j+1)%rowsPerPage),143,202,20,detail.materialName);//品名
+//	LODOP.ADD_PRINT_TEXT(116+30*((j+1)%rowsPerPage),355,101,20,detail.materialSpec);//规格
+//	LODOP.ADD_PRINT_TEXT(116+30*((j+1)%rowsPerPage),474,59,20,detail.sendAmount);//数量
+//	LODOP.ADD_PRINT_TEXT(116+30*((j+1)%rowsPerPage),536,64,20,detail.tradePrice); //单价
+//	LODOP.ADD_PRINT_TEXT(116+30*((j+1)%rowsPerPage),605,84,20,detail.tradeMoney);//金额
+//	LODOP.ADD_PRINT_TEXT(116+30*((j+1)%rowsPerPage),693,70,20,detail.remark);//备注
+	
+	LODOP.ADD_PRINT_TEXT(116+dynamicLineHeight*((j)%rowsPerPage),18,27,rowHeight,j+1);
+	LODOP.ADD_PRINT_TEXT(116+dynamicLineHeight*((j)%rowsPerPage),56,81,rowHeight,detail.materialCode);//物资编码
+	LODOP.ADD_PRINT_TEXT(116+dynamicLineHeight*((j)%rowsPerPage),143,202,rowHeight,detail.materialName);//品名
+	LODOP.ADD_PRINT_TEXT(116+dynamicLineHeight*((j)%rowsPerPage),355,101,rowHeight,detail.materialSpec);//规格
+	LODOP.ADD_PRINT_TEXT(116+dynamicLineHeight*((j)%rowsPerPage),474,59,rowHeight,detail.sendAmount);//数量
+	LODOP.ADD_PRINT_TEXT(116+dynamicLineHeight*((j)%rowsPerPage),536,64,rowHeight,detail.tradePrice); //单价
+	LODOP.ADD_PRINT_TEXT(116+dynamicLineHeight*((j)%rowsPerPage),605,84,rowHeight,detail.tradeMoney);//金额
+	LODOP.ADD_PRINT_TEXT(116+dynamicLineHeight*((j)%rowsPerPage),693,70,rowHeight,detail.remark);//备注
+	
+
+	
+	//--格子画线	
+	LODOP.ADD_PRINT_LINE(139+dynamicLineHeight*((j)%rowsPerPage),14,109+dynamicLineHeight*((j)%rowsPerPage),15,0,1);
+	LODOP.ADD_PRINT_LINE(139+dynamicLineHeight*((j)%rowsPerPage),51,109+dynamicLineHeight*((j)%rowsPerPage),52,0,1);
+	LODOP.ADD_PRINT_LINE(139+dynamicLineHeight*((j)%rowsPerPage),351,109+dynamicLineHeight*((j)%rowsPerPage),352,0,1);
+	LODOP.ADD_PRINT_LINE(139+dynamicLineHeight*((j)%rowsPerPage),534,109+dynamicLineHeight*((j)%rowsPerPage),535,0,1);
+	LODOP.ADD_PRINT_LINE(139+dynamicLineHeight*((j)%rowsPerPage),14,139+dynamicLineHeight*((j)%rowsPerPage),776,0,1);
+	LODOP.ADD_PRINT_LINE(139+dynamicLineHeight*((j)%rowsPerPage),691,109+dynamicLineHeight*((j)%rowsPerPage),692,0,1);
+	LODOP.ADD_PRINT_LINE(139+dynamicLineHeight*((j)%rowsPerPage),602,109+dynamicLineHeight*((j)%rowsPerPage),603,0,1);
+	LODOP.ADD_PRINT_LINE(139+dynamicLineHeight*((j)%rowsPerPage),466,109+dynamicLineHeight*((j)%rowsPerPage),467,0,1);
+	LODOP.ADD_PRINT_LINE(139+dynamicLineHeight*((j)%rowsPerPage),140,109+dynamicLineHeight*((j)%rowsPerPage),141,0,1);
+}
 function PrintDeptGroup(map,printFlag){
 	LODOP = getLodop(document.getElementById('LODOP_OB'), document
 			.getElementById('LODOP_EM'));
@@ -36,85 +110,56 @@ function PrintDeptGroup(map,printFlag){
 		var billNo = map[i].billNo; //单据号
 		var currentPage = i +1;
 		var storageName = map[i].storageName;//仓库
-		
-		//标题
-		LODOP.ADD_PRINT_TEXT(4,136,275,30,"后勤物资发放明细（科室）");
-		LODOP.SET_PRINT_STYLEA(0,"FontSize",12);
-		LODOP.SET_PRINT_STYLEA(0,"Bold",1);
-		LODOP.SET_PRINT_STYLEA(0,"Horient",2);
-		//表头
-		LODOP.ADD_PRINT_TEXT(40,9,288,20,"供货单位："+providerName);
-		LODOP.ADD_PRINT_TEXT(40,300,130,20,"领用部门："+deptName);
-		LODOP.ADD_PRINT_TEXT(40,600,140,20,"单号："+billNo);//杨涛改过，往右边移了，要不部门显示不全
-		LODOP.ADD_PRINT_TEXT(59,10,150,20,"仓　　库："+storageName);
-		LODOP.ADD_PRINT_TEXT(59,300,71,20,"记 账 人：");
-		LODOP.ADD_PRINT_TEXT(59,600,160,20,"页码："+ "第"+currentPage+"页 / 共"+totalPage+"页");//杨涛改过，往右边移了
-
-		//列头
-		LODOP.ADD_PRINT_TEXT(86,18,34,20,"序号");
-		LODOP.ADD_PRINT_TEXT(86,60,74,20,"物资编码");
-		LODOP.ADD_PRINT_TEXT(86,153,120,20,"物资名称");
-		LODOP.ADD_PRINT_TEXT(86,366,85,20,"规格型号");
-		LODOP.ADD_PRINT_TEXT(86,472,50,20,"数量");
-		LODOP.ADD_PRINT_TEXT(86,537,46,20,"单价");
-		LODOP.ADD_PRINT_TEXT(86,613,53,20,"金额");
-		LODOP.ADD_PRINT_TEXT(86,697,56,20,"备注");
-		//
-		LODOP.ADD_PRINT_LINE(81,14,80,774,0,1);
-		LODOP.ADD_PRINT_LINE(81,602,109,603,0,1);
-		LODOP.ADD_PRINT_LINE(81,534,109,535,0,1);
-		
-		LODOP.ADD_PRINT_LINE(109,14,80,15,0,1);
-		LODOP.ADD_PRINT_LINE(109,351,81,352,0,1);
-		LODOP.ADD_PRINT_LINE(109,140,81,141,0,1);
-		LODOP.ADD_PRINT_LINE(109,466,81,467,0,1);
-		LODOP.ADD_PRINT_LINE(109,51,80,52,0,1);
-		LODOP.ADD_PRINT_LINE(109,691,81,692,0,1);
-		LODOP.ADD_PRINT_LINE(109,775,80,776,0,1);
-
-		LODOP.ADD_PRINT_LINE(110,14,109,776,0,1);
+		reportTitle();
+		reportHeader(providerName, deptName, billNo, storageName, currentPage, totalPage);
 //		
 		//--行内容
 		var details = map[i].detail;
 
 		var detailRows = details.length;
-
-		var detailHeight = 116;
+//////////////////////////////////////////////////////////////////
+		var tempHeight = 116;
+		var itemsPerPage = 15;//明细打印行数
+		var rowHeight = 15; //明细数据高
+		var dynamicLineHeight = 25;//包裹明细数据单元格高
+		var k=0;
+		var sum = 0;
 		for (j = 0; j < detailRows; j++) { //表格数据
 		
-			LODOP.ADD_PRINT_TEXT(116+30*j,18,27,20,j+1);
-			LODOP.ADD_PRINT_TEXT(116+30*j,56,81,20,details[j].materialCode);//物资编码
-			LODOP.ADD_PRINT_TEXT(116+30*j,143,202,20,details[j].materialName);//品名
-			LODOP.ADD_PRINT_TEXT(116+30*j,355,101,20,details[j].materialSpec);//规格
-			LODOP.ADD_PRINT_TEXT(116+30*j,474,59,20,details[j].sendAmount);//数量
-			LODOP.ADD_PRINT_TEXT(116+30*j,536,64,20,details[j].tradePrice); //单价
-			LODOP.ADD_PRINT_TEXT(116+30*j,605,84,20,details[j].tradeMoney);//金额
-			LODOP.ADD_PRINT_TEXT(116+30*j,693,70,20,details[j].remark);//备注
-			
-		
-			
-			//--格子画线	
-			LODOP.ADD_PRINT_LINE(139+30*j,14,109+30*j,15,0,1);
-			LODOP.ADD_PRINT_LINE(139+30*j,51,109+30*j,52,0,1);
-			LODOP.ADD_PRINT_LINE(139+30*j,351,109+30*j,352,0,1);
-			LODOP.ADD_PRINT_LINE(139+30*j,534,109+30*j,535,0,1);
-			LODOP.ADD_PRINT_LINE(140+30*j,14,139+30*j,776,0,1);
-			LODOP.ADD_PRINT_LINE(139+30*j,691,109+30*j,692,0,1);
-			LODOP.ADD_PRINT_LINE(139+30*j,602,109+30*j,603,0,1);
-			LODOP.ADD_PRINT_LINE(139+30*j,466,109+30*j,467,0,1);
-			LODOP.ADD_PRINT_LINE(139+30*j,140,109+30*j,141,0,1);			
-			
-			detailHeight += 30;
+			k++;
+			if(j>0 &&(j%itemsPerPage == 0)){
+				LODOP.NewPage();
+				reportTitle();
+				reportHeader(providerName, deptName, billNo, storageName, currentPage, totalPage);
+//				LODOP.ADD_PRINT_TEXT(tempHeight+30*((j)%itemsPerPage),30,100,30,"发货人：");
+//				LODOP.ADD_PRINT_TEXT(tempHeight+30*((j)%itemsPerPage),300,80,30,"收货人：");//杨涛改过，往右边移了
+//				LODOP.ADD_PRINT_TEXT(tempHeight+30*((j)%itemsPerPage),600,80,30,"制单人：");//杨涛改过，往右边移了
+				
+			}
+			reportDetail(details[j],j,itemsPerPage,dynamicLineHeight,rowHeight);
+			sum += details[j].tradeMoney;
 			
 		}	 
+		if(k>0 && k % itemsPerPage == 0){
+			
+			LODOP.ADD_PRINT_TEXT(tempHeight+dynamicLineHeight*itemsPerPage,30,100,dynamicLineHeight,"发货人：");
+			LODOP.ADD_PRINT_TEXT(tempHeight+dynamicLineHeight*itemsPerPage,230,80,dynamicLineHeight,"收货人：");//杨涛改过，往右边移了
+			LODOP.ADD_PRINT_TEXT(tempHeight+dynamicLineHeight*itemsPerPage,430,80,dynamicLineHeight,"制单人：");//杨涛改过，往右边移了
+			LODOP.ADD_PRINT_TEXT(tempHeight+dynamicLineHeight*itemsPerPage,630,120,dynamicLineHeight,"合计："+sum.toFixed(2));//杨涛改过，往右边移了
+			
+		}else{
+			
+			LODOP.ADD_PRINT_TEXT(tempHeight+dynamicLineHeight*((k)%itemsPerPage),30,100,dynamicLineHeight,"发货人：");
+			LODOP.ADD_PRINT_TEXT(tempHeight+dynamicLineHeight*((k)%itemsPerPage),230,80,dynamicLineHeight,"收货人：");//杨涛改过，往右边移了
+			LODOP.ADD_PRINT_TEXT(tempHeight+dynamicLineHeight*((k)%itemsPerPage),430,80,dynamicLineHeight,"制单人：");//杨涛改过，往右边移了
+			LODOP.ADD_PRINT_TEXT(tempHeight+dynamicLineHeight*((k)%itemsPerPage),630,120,dynamicLineHeight,"合计："+sum.toFixed(2));//杨涛改过，往右边移了
+		}
 		
-		LODOP.ADD_PRINT_TEXT(detailHeight,30,100,30,"发货人：");
-		LODOP.ADD_PRINT_TEXT(detailHeight,300,80,30,"收货人：");//杨涛改过，往右边移了
-		LODOP.ADD_PRINT_TEXT(detailHeight,600,80,30,"制单人：");//杨涛改过，往右边移了
 	
 	}
 	if(printFlag == '2'){
 		LODOP.PRINTA();
+		//LODOP.PREVIEW();//把本行取消注释，上一行屏蔽了就是预览模式
 	}
 //	if(printFlag == '3'){
 //		LODOP.SAVE_TO_FILE("d:\\2.xls"); 

@@ -824,6 +824,7 @@ public class VMaterialRdsDAO extends BaseHibernateDAO {
 			Map<String, Object> conditions) {
 		String rdFlag = (String) conditions.get("rdFlag");
 		String storageCode = (String) conditions.get("storageCode");
+		String salerName = (String) conditions.get("salerName");
 		Date beginBillDate = (Date) conditions.get("beginBillDate");
 		Date endBillDate = (Date) conditions.get("endBillDate");
 		String deptUnitsCode = (String) conditions.get("deptUnitsCode"); //这里的unitsCode为前台传入
@@ -865,6 +866,10 @@ public class VMaterialRdsDAO extends BaseHibernateDAO {
 		if (operationType != null && !"".equals(operationType)) {
 			shql.append(" and operationType=:operationType");
 		}
+		if (salerName != null && !"".equals(salerName)) {
+			shql.append(" and salerName=:salerName");
+		}
+		
 		if (rdType != null && !"".equals(rdType)) {
 			shql.append(" and rdType=:rdType");
 		}
