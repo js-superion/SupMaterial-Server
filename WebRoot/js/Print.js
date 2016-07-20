@@ -48,7 +48,7 @@ function PrintDeptGroup(map,printFlag){
 		LODOP.ADD_PRINT_TEXT(40,600,140,20,"单号："+billNo);//杨涛改过，往右边移了，要不部门显示不全
 		LODOP.ADD_PRINT_TEXT(59,10,150,20,"仓　　库："+storageName);
 		LODOP.ADD_PRINT_TEXT(59,300,71,20,"记 账 人：");
-		LODOP.ADD_PRINT_TEXT(59,600,160,20,"页码："+ "第"+currentPage+"页 / 共"+totalPage+"页");//杨涛改过，往右边移了
+		LODOP.ADD_PRINT_TEXT(59,600,160,20,"页码："+ "第"+currentPage+"页 / 共"+totalPage+"页");//往右边移
 
 		//列头
 		LODOP.ADD_PRINT_TEXT(86,18,34,20,"序号");
@@ -109,8 +109,8 @@ function PrintDeptGroup(map,printFlag){
 		}	 
 		
 		LODOP.ADD_PRINT_TEXT(detailHeight,30,100,30,"发货人：");
-		LODOP.ADD_PRINT_TEXT(detailHeight,300,80,30,"收货人：");//杨涛改过，往右边移了
-		LODOP.ADD_PRINT_TEXT(detailHeight,600,80,30,"制单人：");//杨涛改过，往右边移了
+		LODOP.ADD_PRINT_TEXT(detailHeight,300,80,30,"收货人：");//改过，往右边移
+		LODOP.ADD_PRINT_TEXT(detailHeight,600,80,30,"制单人：");//改过，往右边移
 	
 	}
 	if(printFlag == '2'){

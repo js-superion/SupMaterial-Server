@@ -67,6 +67,7 @@ public class ReceiveImpl implements IReceive {
 		String invoiceNo = (String) map.get("invoiceNo");
 		String isGive = (String) map.get("isGive");
 
+		String rdFlag = (String) map.get("rdFlag");
 		StringBuilder conditions = new StringBuilder();
 
 //		String unitsCode = SessionUtil.getUnitsCode();
@@ -88,7 +89,7 @@ public class ReceiveImpl implements IReceive {
 		conditions.append(" and billDate <= to_date('" + endDate + " 23:59:59"
 				+ "','yyyy-mm-dd hh24:mi:ss')");
 		// 附加条件--主记录
-		conditions.append(" and rdFlag='1'");
+		conditions.append(" and rdFlag='"+rdFlag+"'");
 		conditions.append(" and currentStatus='1')");
 		// 附加条件--明细记录
 		// 发票号
@@ -103,7 +104,13 @@ public class ReceiveImpl implements IReceive {
 		else{
 			conditions.append(" and (isGive is null or isGive='0')");
 		}
-		conditions.append(" and acctBillNo='0' and currentStatus = '1'");
+		
+		if(rdFlag!=null && rdFlag.equals("2")){
+			conditions.append(" and acctBillNo='0' ");
+		}else{
+			conditions.append(" and acctBillNo='0' and currentStatus = '1'");
+		}
+		
 
 //		conditions.append(" order by mainAutoId,serialNo");7-18按照日期升序排
 		conditions.append(" order by invoiceDate ,autoId ");
